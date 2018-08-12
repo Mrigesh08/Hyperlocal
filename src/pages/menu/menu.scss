@@ -1,3 +1,10 @@
 page-menu {
-
+  ion-card{
+    position: relative;
+  }
+  .menucard-price {
+    position: absolute;
+    bottom: 0;
+    left:0;
+  }
 }
