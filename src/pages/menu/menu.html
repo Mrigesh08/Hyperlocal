@@ -12,17 +12,76 @@
 
 </ion-header>
 
+<ion-content padding >
 
-<ion-content padding>
-  <ion-card *ngFor="let item of items">
-    <img src="item.image">
-    <div class="menucard-price"> {{ item.price }}</div>
-    <ion-card-header>
-      {{ item.name }}
-    </ion-card-header>
-    <ion-card-content>
-      {{ item.description }}
+
+  <!-- <ion-card  *ngFor="let item of items; let i=index" (click)="expandCard(i)">
+
+    <div class="">
+      <div class="menucard-img">
+        <img src='{{ item.image }}'>
+        <div class="menucard-price"> {{ item.price }}</div>
+      </div>
+      <ion-card-header>
+        {{ item.name }}
+      </ion-card-header>
+    </div>
+    <div class="wrap-collabsible">
+    <ion-card-content >
+      <div class="description-wrapper">
+        <div class="left_description">
+          {{ item.description }}
+        </div>
+        <div class="right_description">
+          <button ion-button color="primary" clear small icon-start>
+            <ion-icon name='text'></ion-icon>
+            4 Comments
+          </button>
+        </div>
+      </div>
+      <div class="customization">
+        <input id="collapsible" class="toggle" type="checkbox">
+        <label for="collapsible" class="lbl-toggle">  <ion-icon md="md-more"></ion-icon></label>
+        <div class="collapsible-content">
+          <div class="content-inner">
+            <p>
+              QUnit is by calling one of the object that are embedded in JavaScript, and faster JavaScript program could also used with
+              its elegant, well documented, and functional programming using JS, HTML pages Modernizr is a popular browsers without
+              plug-ins. Test-Driven Development.
+              lorem
+            </p>
+          </div>
+        </div>
+      </div>
     </ion-card-content>
-  </ion-card>
+    </div>
+  </ion-card> -->
 
+  <ion-card-content *ngFor="let item of items; let i=index" no-padding>
+    <div class="card">
+     <div class="card-image waves-effect waves-block waves-light">
+       <img class="activator" src="../../assets/imgs/Menu/yo.jpg">
+       <span class="card-title">{{item.price}}</span>
+     </div>
+     <div class="card-content">
+       <span class="card-title activator grey-text text-darken-4 fontsize-medium">{{item.name}}<button ion-button color="primary" clear round float-right>Add</button></span>
+       <p class="fontsize-small">{{item.description}}</p>
+     </div>
+     <div class="card-reveal text-wrap">
+       <span class="card-title grey-text text-darken-4">{{item.name}}<i class="material-icons right">X</i></span>
+       <div text-wrap>
+         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+       </div>
+      </div>
+    </div>
+  </ion-card-content>
+  <ion-fab right bottom>
+    <button ion-fab>Bag</button>
+    <!-- <ion-fab-list side="top">
+      <button ion-fab><ion-icon name="logo-facebook"></ion-icon></button>
+      <button ion-fab><ion-icon name="logo-twitter"></ion-icon></button>
+      <button ion-fab><ion-icon name="logo-vimeo"></ion-icon></button>
+      <button ion-fab><ion-icon name="logo-googleplus"></ion-icon></button>
+    </ion-fab-list> -->
+  </ion-fab>
 </ion-content>
