@@ -1,0 +1,7 @@
+{
+  "name": "Hyperlocal",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
