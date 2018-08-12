@@ -67,6 +67,20 @@ export class MenuPage {
       false
     ];
   }
+  slides = [
+    {
+      title: "Welcome to the Docs!",
+      image: "assets/imgs/Menu/yo.jpg",
+    },
+    {
+      title: "Welcome to the Docs!",
+      image: "assets/imgs/Menu/yo.jpg",
+    },
+    {
+      title: "Welcome to the Docs!",
+      image: "assets/imgs/Menu/yo.jpg",
+    }
+  ];
 
   // ionViewDidLoad() {
   //   console.log('ionViewDidLoad MenuPage');
