@@ -14,6 +14,13 @@
 
 
 <ion-content padding>
+
+  <ion-slides pager autoplay="3000" loop="true" speed="1000">
+    <ion-slide *ngFor="let slide of slides">
+      <img [src]="slide.image" class="slide-image"/>
+    </ion-slide>
+  </ion-slides>
+
   <ion-card *ngFor="let item of items">
     <img src="item.image">
     <div class="menucard-price"> {{ item.price }}</div>
