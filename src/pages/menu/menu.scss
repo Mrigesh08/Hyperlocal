@@ -5,6 +5,9 @@ page-menu {
   ion-card-header{
     border: 3px solid #000;
   }
+  ion-slides{
+    border : 2px solid #000;
+  }
   .menucard-img{
     position: relative;
     min-height: 2em;
@@ -128,5 +131,8 @@ page-menu {
     max-height: 100%;
     max-width: 100%;
     margin: 1.1em 0;
+  }
+  .my-btn{
+
   }
 }

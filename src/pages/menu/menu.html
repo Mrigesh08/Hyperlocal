@@ -12,13 +12,14 @@
 
 </ion-header>
 
-<ion-content padding >
+<ion-content no-padding>
 
-  <ion-slides pager autoplay="3000" loop="true" speed="1000">
+  <ion-slides autoplay="3000" loop="true" speed="1000" style="max-height:250px;">
     <ion-slide *ngFor="let slide of slides">
       <img [src]="slide.image" class="slide-image"/>
     </ion-slide>
   </ion-slides>
+
   <!-- <ion-card  *ngFor="let item of items; let i=index" (click)="expandCard(i)">
 
     <div class="">
@@ -60,25 +61,100 @@
     </ion-card-content>
     </div>
   </ion-card> -->
+  <!-- <body data-spy="scroll" data-target="#myScrollspy" data-offset="150px">
 
-  <ion-card-content *ngFor="let item of items; let i=index" no-padding>
-    <div class="card">
-     <div class="card-image waves-effect waves-block waves-light">
-       <img class="activator" src="../../assets/imgs/Menu/yo.jpg">
-       <span class="card-title">{{item.price}}</span>
-     </div>
-     <div class="card-content">
-       <span class="card-title activator grey-text text-darken-4 fontsize-medium">{{item.name}}<button ion-button color="primary" clear round float-right>Add</button></span>
-       <p class="fontsize-small">{{item.description}}</p>
-     </div>
-     <div class="card-reveal text-wrap">
-       <span class="card-title grey-text text-darken-4">{{item.name}}<i class="material-icons right">X</i></span>
-       <div text-wrap>
-         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-       </div>
-      </div>
+  </body> -->
+  <ul id="myScrollspy" class="nav nav-tabs" data-spy="affix" data-offset-top="250px" style="margin-top:20px;">
+    <li class="active"><a data-toggle="tab" href="#menu1">Menu1</a></li>
+    <!-- <li class="dropdow">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu 1
+      <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="#">Submenu 1-1</a></li>
+        <li><a href="#">Submenu 1-2</a></li>
+        <li><a href="#">Submenu 1-3</a></li>
+      </ul>
+    </li> -->
+    <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
+    <li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
+  </ul>
+  <div class="tab-content">
+    <div id="menu1" class="tab-pane fade in active">
+      <ion-card-content *ngFor="let item of items; let i=index" no-padding margin>
+        <div class="card">
+         <div class="card-image waves-effect waves-block waves-light">
+           <img class="activator" src="../../assets/imgs/Menu/yo.jpg">
+           <span class="card-title">{{item.price}}</span>
+         </div>
+         <div class="card-content activator" style="padding:0.5em 0.5em 1.5em 1.5em">
+           <span class="card-title activator grey-text text-darken-4 fontsize-medium" style=" overflow: auto;line-height:2em;">
+             {{item.name}}
+             <button ion-button clear round float-right class="fontsize-small my-btn">
+               Add
+             </button>
+           </span>
+           <p class="fontsize-medium activator">{{item.description}}</p>
+         </div>
+         <div class="card-reveal">
+           <span class="card-title grey-text text-darken-4">{{item.name}}<i class="material-icons right">X</i></span>
+           <div text-wrap>
+             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+           </div>
+          </div>
+        </div>
+      </ion-card-content>
     </div>
-  </ion-card-content>
+    <div id="menu2" class="tab-pane fade">
+      <ion-card-content *ngFor="let item of items; let i=index" no-padding margin>
+        <div class="card">
+         <div class="card-image waves-effect waves-block waves-light">
+           <img class="activator" src="../../assets/imgs/Menu/yo.jpg">
+           <span class="card-title">{{item.price}}</span>
+         </div>
+         <div class="card-content activator" style="padding:0.5em 0.5em 1.5em 1.5em">
+           <span class="card-title activator grey-text text-darken-4 fontsize-medium" style=" overflow: auto;line-height:2em;">
+             {{item.name}}
+             <button ion-button clear round float-right class="fontsize-small my-btn">
+               Add
+             </button>
+           </span>
+           <p class="fontsize-medium activator">{{item.description}}</p>
+         </div>
+         <div class="card-reveal">
+           <span class="card-title grey-text text-darken-4">{{item.name}}<i class="material-icons right">X</i></span>
+           <div text-wrap>
+             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+           </div>
+          </div>
+        </div>
+      </ion-card-content>
+    </div>
+    <div id="menu3" class="tab-pane">
+      <ion-card-content *ngFor="let item of items; let i=index" no-padding margin>
+        <div class="card">
+         <div class="card-image waves-effect waves-block waves-light">
+           <img class="activator" src="../../assets/imgs/Menu/yo.jpg">
+           <span class="card-title">{{item.price}}</span>
+         </div>
+         <div class="card-content activator" style="padding:0.5em 0.5em 1.5em 1.5em">
+           <span class="card-title activator grey-text text-darken-4 fontsize-medium" style=" overflow: auto;line-height:2em;">
+             {{item.name}}
+             <button ion-button clear round float-right class="fontsize-small my-btn">
+               Add
+             </button>
+           </span>
+           <p class="fontsize-medium activator">{{item.description}}</p>
+         </div>
+         <div class="card-reveal">
+           <span class="card-title grey-text text-darken-4">{{item.name}}<i class="material-icons right">X</i></span>
+           <div text-wrap>
+             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+           </div>
+          </div>
+        </div>
+      </ion-card-content>
+    </div>
+  </div>
   <ion-fab right bottom>
     <button ion-fab>Bag</button>
     <!-- <ion-fab-list side="top">
@@ -88,4 +164,5 @@
       <button ion-fab><ion-icon name="logo-googleplus"></ion-icon></button>
     </ion-fab-list> -->
   </ion-fab>
+  <ion-content>
 </ion-content>
