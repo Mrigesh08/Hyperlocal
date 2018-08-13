@@ -1,5 +1,8 @@
+# builds and downloads
 www
 .sourcemaps
+platforms
+plugins
 
 # Logs
 logs
