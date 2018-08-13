@@ -36,6 +36,7 @@ export class UserProvider {
     return this.result.confirm(OTP)
       .then(result => {
         console.log("OTP Verified.");
+        this.result = null;
         this.user = new User(result.user.uid, "", result.user.phoneNumber);
         return firebase.database().ref('/users').child(result.user.uid)
           .set({ userId: result.user.uid, phoneNumber: result.user.phoneNumber });
@@ -45,15 +46,13 @@ export class UserProvider {
   }
   setFullName(fullName: string): Promise<any> {
     console.log("Setting fullName...");
-    return firebase.database().ref('/users').child(this.user.userId)
-      .set({fullName: fullName})
+    return firebase.database().ref('/users/' + this.user.userId + '/fullName').set(fullName)
       .then(snap => this.user.fullName = fullName)
       .then(() => console.log("Setting fullName successful."));
   }
   setPassword(password: string): Promise<any> {
     console.log("Setting password...");
-    return firebase.database().ref('/users').child(this.user.userId)
-      .set({password: password})
+    return firebase.database().ref('/users/' + this.user.userId + '/password').set(password)
       .then(() => console.log("Setting password successful."));
   }
 }
