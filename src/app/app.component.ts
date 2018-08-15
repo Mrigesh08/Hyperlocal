@@ -6,9 +6,7 @@ import { Config, Nav, Platform } from 'ionic-angular';
 // import { FirstRunPage } from '../pages';
 
 import { TutorialPage } from '../pages/tutorial/tutorial';
-
 import { HomePage } from '../pages/home/home';
-
 import { MorphlistPage } from '../pages/morphlist/morphlist'
 
 @Component({
@@ -17,11 +15,13 @@ import { MorphlistPage } from '../pages/morphlist/morphlist'
 export class MyApp {
   rootPage:any = TutorialPage;
 
+  @ViewChild(Nav) nav: Nav;
   // pages: Array<{ title: string, component: any}>;
 
   pages: any[] = [
-    { title: 'Tutorial', component: 'TutorialPage' },
     { title: 'Home', component: 'HomePage' },
+    { title: 'Tutorial', component: 'TutorialPage' },
+    { title: 'Morph', component: 'MorphlistPage' },
   ]
 
   constructor(platform: Platform, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {
@@ -31,6 +31,10 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+  }
+
+  openPage(page) {
+    this.nav.setRoot(page.component);
   }
 
 }

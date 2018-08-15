@@ -19,32 +19,33 @@
 <ion-content padding>
 	<ion-list>
 		<ion-item-sliding>
-			<!-- <button ion-item *ngFor="let outlet of outlets" (click)="openPage(outlet)">
+			<button ion-item *ngFor="let outlet of outlets" (click)="openPage(outlet)">
 				<ion-avatar item-start>
-					<img [src]="item.orgPic" />
+					<img [src]="outlet.image" />
 				</ion-avatar>
 				<h2>{{outlet.name}}</h2>
+				<p>{{outlet.subtext}}</p>
+			</button>
+			<!-- <button ion-item>
+				<ion-avatar item-start>
+					<img src="https://corporate.dominos.co.uk/Media/Default/Image%20Library/Image%20library%20-%20logos/RGB_White_Type_Tile_Only_Small.png" />
+				</ion-avatar>
+				<h2>Dominos</h2>
+			</button>
+
+			<button ion-item>
+				<ion-avatar item-start>
+					<img src="https://corporate.dominos.co.uk/Media/Default/Image%20Library/Image%20library%20-%20logos/RGB_White_Type_Tile_Only_Small.png" />
+				</ion-avatar>
+				<h2>Dominos</h2>
+			</button>
+
+			<button ion-item>
+				<ion-avatar item-start>
+					<img src="https://corporate.dominos.co.uk/Media/Default/Image%20Library/Image%20library%20-%20logos/RGB_White_Type_Tile_Only_Small.png" />
+				</ion-avatar>
+				<h2>Dominos</h2>
 			</button> -->
-			<button ion-item>
-				<ion-avatar item-start>
-					<img src="https://corporate.dominos.co.uk/Media/Default/Image%20Library/Image%20library%20-%20logos/RGB_White_Type_Tile_Only_Small.png" />
-				</ion-avatar>
-				<h2>Dominos</h2>
-			</button>
-
-			<button ion-item>
-				<ion-avatar item-start>
-					<img src="https://corporate.dominos.co.uk/Media/Default/Image%20Library/Image%20library%20-%20logos/RGB_White_Type_Tile_Only_Small.png" />
-				</ion-avatar>
-				<h2>Dominos</h2>
-			</button>
-
-			<button ion-item>
-				<ion-avatar item-start>
-					<img src="https://corporate.dominos.co.uk/Media/Default/Image%20Library/Image%20library%20-%20logos/RGB_White_Type_Tile_Only_Small.png" />
-				</ion-avatar>
-				<h2>Dominos</h2>
-			</button>
 		</ion-item-sliding>
 	</ion-list>
 </ion-content>
