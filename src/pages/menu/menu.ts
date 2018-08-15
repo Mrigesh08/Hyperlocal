@@ -17,15 +17,10 @@ import { ReviewOrderPage } from "../review-order/review-order";
 export class MenuPage {
   items : any[];
   title : any;
-  className : any;
-  expandToggle: any= [];
-  expandHeight : number = 100;
-  shownGroup : any = null;
+  slides : any[];
   reviewOrderPage : any = ReviewOrderPage;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.title = "Menu";
-    this.className = "Hi";
-    this.shownGroup = null;
     this.items = [
       {
         image : "assets/imgs/Menu/yo.jpg",
@@ -62,58 +57,27 @@ export class MenuPage {
 
       }
     ];
-    this.expandToggle = [
-      false,
-      false,
-      false,
-      f      false
+    this.slides = [
+      {
+        title: "Welcome to the Docs!",
+        image: "assets/imgs/Menu/yo.jpg",
+      },
+      {
+        title: "Welcome to the Docs!",
+        image: "assets/imgs/Menu/yo.jpg",
+      },
+      {
+        title: "Welcome to the Docs!",
+        image: "assets/img/Menu/syo.jpg",
+      }
     ];
   }
-  slides = [
-    {
-      title: "Welcome to the Docs!",
-      image: "assets/imgs/Menu/yo.jpg",
-  {
-      title: "Welcome to the Docs!",
-      image: "assets/imgs/Menu/yo.jpg",
-    },
-    {
-      title: "Welcome to the Docs!",
-      image: "assets/imgsyo.jpg",
-    }
-  ];
 
-  // ionViewDidLoad() {
-  //   console.log('ionViewDidLoad MenuPage');
-  // }
-  // expandCard(i) {
-  //   var k=0;
-  //   for(k=0;k<2;k++){
-  //     if(i==k){
-  //       this.expandToggle[k]=!this.expandToggle[k];
-  //       this.className="animated slideInDown";
-  //     }
-  //     else{
-  //       this.expandToggle[k]=false;
-  //     }
-  //   }
-  // }
+
   reviewOrder(){
     this.navCtrl.push(this.reviewOrderPage);
   }
 
-  isGroupShown(group){
-    return this.shownGroup === group;
-  }
-
-  toggleGroup(group){
-    if(this.isGroupShown(group)){
-      this.shownGroup = null;
-    }
-    else{
-      this.shownGroup === group;
-    }
-  }
 
 
 }

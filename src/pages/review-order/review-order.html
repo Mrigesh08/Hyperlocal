@@ -14,11 +14,19 @@
 
 
 <ion-content padding>
-  <ion-card>
-    <ion-card-header>
-      <ion-icon name="pricetags" color="#f00"></ion-icon>
+  <ion-card style="padding-bottom:0;">
+    <ion-card-header (click)="toggleCard()" class="couponHeader" no-margin>
+      <ion-icon name="pricetags" style="color:#00f;"></ion-icon>
        Have a coupon?
     </ion-card-header>
+    <ion-card-content #cc2 class="hiddenContent" text-center>
+      <form (ngSubmit)="submitCoupon()">
+        <ion-item>
+          <ion-input type="text" name="code" placeholder="Enter coupon code .." [(ngModel)]="code"></ion-input>
+        </ion-item>
+        <button ion-button block medium type="submit">Submit</button>
+      </form>
+    </ion-card-content>
   </ion-card>
   <ion-card>
     <ion-card-header>
@@ -27,7 +35,7 @@
     <ion-card-content>
       <ion-list text-center>
         <ion-item>
-          <div > // use ng for here
+          <div >
             <p style="float:left;">ITEM name</p>
             <p style="float:right;">Rs. 345</p>
           </div>
@@ -47,6 +55,6 @@
 
 <ion-footer text-center>
   <button ion-button large clear text-center>
-    Place Order Bhosdike
+    Place Order
   </button>
 </ion-footer>
