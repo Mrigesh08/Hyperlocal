@@ -1,25 +1,37 @@
 <ion-header no-shadow>
-  <ion-navbar>
-    <ion-buttons end *ngIf="showSkip">
-      <button ion-button (click)="startApp()" color="primary">{{ 'TUTORIAL_SKIP_BUTTON' | translate}}</button>
-    </ion-buttons>
-  </ion-navbar>
 </ion-header>
-
 <ion-content no-bounce>
-  <ion-slides pager="true" dir="{{dir}}" (ionSlideWillChange)="onSlideChangeStart($event)">
+  <!-- <ion-slides pager="true" dir="{{dir}}" (ionSlideWillChange)="onSlideChangeStart($event)">
     <ion-slide *ngFor="let slide of slides">
       <img [src]="slide.image" class="slide-image" />
       <h2 class="slide-title" [innerHTML]="slide.title"></h2>
       <p [innerHTML]="slide.description"></p>
     </ion-slide>
     <ion-slide>
-      <img src="assets/img/ica-slidebox-img-4.png" class="slide-image" />
+      <img src="../../assets/img/ica-slidebox-img-4.png" class="slide-image" />
       <h2 class="slide-title">{{ 'TUTORIAL_SLIDE4_TITLE' | translate }}</h2>
       <button ion-button icon-end large clear (click)="startApp()">
         {{ 'TUTORIAL_CONTINUE_BUTTON' | translate }}
         <ion-icon name="arrow-forward"></ion-icon>
       </button>
     </ion-slide>
-  </ion-slides>
+  </ion-slides> -->
+
+<ion-slides pager="true" (ionSlideWillChange)="onSlideChangeStart($event)">
+  <ion-slide *ngFor="let item of slides">
+    <ion-buttons end *ngIf="showSkip">
+      <button ion-button (click)="startApp()" color="primary" clear>Skip</button>
+    </ion-buttons>
+    <ion-buttons end *ngIf="!showSkip">
+      <button ion-button (click)="startApp()" color="primary" clear>Continue</button>
+    </ion-buttons>
+
+    <img src="{{item.image}}" class="slider-image">
+    <h2 class="slide-title">{{item.title}}</h2>
+    <p>{{item.description}}</p>
+    <button ion-button icon-end large clear (click)="startApp()">
+      CONTINUE
+    </button>
+  </ion-slide>
+</ion-slides>
 </ion-content>
