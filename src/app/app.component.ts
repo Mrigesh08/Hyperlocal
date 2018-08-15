@@ -5,6 +5,9 @@ import { Config, Nav, Platform } from 'ionic-angular';
 
 // import { FirstRunPage } from '../pages';
 
+import * as firebase from 'firebase';
+import { firebaseConfig } from './environment';
+import { WelcomePage } from '../pages/welcome/welcome';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { HomePage } from '../pages/home/home';
 import { MorphlistPage } from '../pages/morphlist/morphlist'
@@ -28,6 +31,9 @@ export class MyApp {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
+      statusBar.styleDefault();
+      splashScreen.hide();
+      firebase.initializeApp(firebaseConfig);      
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });

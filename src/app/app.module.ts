@@ -9,12 +9,19 @@ import { IonicStorageModule, Storage } from '@ionic/storage';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { TutorialPage} from "../pages/tutorial/tutorial";
+import { LoginPage } from '../pages/login/login';
+import { SignupPage } from '../pages/signup/signup';
+import { WelcomePage } from '../pages/welcome/welcome'
+import { UserProvider } from '../providers/user/user';
+import { TutorialPage } from "../pages/tutorial/tutorial";
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
+    LoginPage,
+    SignupPage,
+    WelcomePage,
     TutorialPage
   ],
   imports: [
@@ -27,12 +34,16 @@ import { TutorialPage} from "../pages/tutorial/tutorial";
   entryComponents: [
     MyApp,
     HomePage,
+    LoginPage,
+    SignupPage,
+    WelcomePage,
     TutorialPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    UserProvider,  
   ]
 })
 export class AppModule {}
