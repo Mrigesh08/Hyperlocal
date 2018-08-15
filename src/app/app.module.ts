@@ -10,7 +10,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicStorageModule, Storage } from '@ionic/storage';
 
 import { MyApp } from './app.component';
-// import { HomePage } from '../pages/home/home';
+import { HomePage } from '../pages/home/home';
+import { MorphlistPage } from '../pages/morphlist/morphlist';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -19,7 +20,8 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   declarations: [
     MyApp,
-    // HomePage
+    HomePage,
+    MorphlistPage
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,8 @@ export function createTranslateLoader(http: HttpClient) {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    // HomePage
+    HomePage,
+    MorphlistPage
   ],
   providers: [
     StatusBar,

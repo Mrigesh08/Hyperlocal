@@ -4,17 +4,19 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { TranslateService } from '@ngx-translate/core';
 import { Config, Nav, Platform } from 'ionic-angular';
 
-import { FirstRunPage } from '../pages';
+// import { FirstRunPage } from '../pages';
 
-// import { TutorialPage } from '../pages/tutorial/tutorial';
+import { TutorialPage } from '../pages/tutorial/tutorial';
 
-// import { HomePage } from '../pages/home/home';
+import { HomePage } from '../pages/home/home';
+
+import { MorphlistPage } from '../pages/morphlist/morphlist'
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage = FirstRunPage;
+  rootPage = MorphlistPage;
 
   @ViewChild(Nav) nav: Nav;
 
