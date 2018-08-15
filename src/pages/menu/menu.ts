@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-// import { ExpandableComponent } from '../../components/expandable/expandable'
+// import { AccordionComponent } from '../../components/accordion/accordion';
+import { ReviewOrderPage } from "../review-order/review-order";
 /**
  * Generated class for the MenuPage page.
  *
@@ -19,40 +20,42 @@ export class MenuPage {
   className : any;
   expandToggle: any= [];
   expandHeight : number = 100;
-  // k : number =0;
+  shownGroup : any = null;
+  reviewOrderPage : any = ReviewOrderPage;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.title = "Menu";
     this.className = "Hi";
+    this.shownGroup = null;
     this.items = [
       {
-        image : "../../assets/imgs/Menu/yo.jpg",
+        image : "assets/imgs/Menu/yo.jpg",
         price : "Rs. 250",
         name  : "Name1",
         description : "1. Lorem ipsum dolor sit amet, consectetur adipisicing elit."
       },
       {
-        image : "../../assets/imgs/Menu/yo.jpg",
+        image : "assets/imgs/Menu/yo.jpg",
         price : "Rs. 550",
         name  : "Name2",
         description : "2. Lorem ipsum dolor sit amet, consectetur adipisicing elit."
 
       },
       {
-        image : "../../assets/imgs/Menu/yo.jpg",
+        image : "assets/imgs/Menu/yo.jpg",
         price : "Rs. 550",
         name  : "Name2",
         description : "2. Lorem ipsum dolor sit amet, consectetur adipisicing elit."
 
       },
       {
-        image : "../../assets/imgs/Menu/yo.jpg",
+        image : "assets/imgs/Menu/yo.jpg",
         price : "Rs. 550",
         name  : "Name2",
         description : "2. Lorem ipsum dolor sit amet, consectetur adipisicing elit."
 
       },
       {
-        image : "../../assets/imgs/Menu/yo.jpg",
+        image : "assets/imgs/Menu/yo.jpg",
         price : "Rs. 550",
         name  : "Name2",
         description : "2. Lorem ipsum dolor sit amet, consectetur adipisicing elit."
@@ -63,39 +66,54 @@ export class MenuPage {
       false,
       false,
       false,
-      false,
-      false
+      f      false
     ];
   }
   slides = [
     {
       title: "Welcome to the Docs!",
       image: "assets/imgs/Menu/yo.jpg",
-    },
-    {
+  {
       title: "Welcome to the Docs!",
       image: "assets/imgs/Menu/yo.jpg",
     },
     {
       title: "Welcome to the Docs!",
-      image: "assets/imgs/Menu/yo.jpg",
+      image: "assets/imgsyo.jpg",
     }
   ];
 
   // ionViewDidLoad() {
   //   console.log('ionViewDidLoad MenuPage');
   // }
-  expandCard(i) {
-    var k=0;
-    for(k=0;k<2;k++){
-      if(i==k){
-        this.expandToggle[k]=!this.expandToggle[k];
-        this.className="animated slideInDown";
-      }
-      else{
-        this.expandToggle[k]=false;
-      }
+  // expandCard(i) {
+  //   var k=0;
+  //   for(k=0;k<2;k++){
+  //     if(i==k){
+  //       this.expandToggle[k]=!this.expandToggle[k];
+  //       this.className="animated slideInDown";
+  //     }
+  //     else{
+  //       this.expandToggle[k]=false;
+  //     }
+  //   }
+  // }
+  reviewOrder(){
+    this.navCtrl.push(this.reviewOrderPage);
+  }
+
+  isGroupShown(group){
+    return this.shownGroup === group;
+  }
+
+  toggleGroup(group){
+    if(this.isGroupShown(group)){
+      this.shownGroup = null;
+    }
+    else{
+      this.shownGroup === group;
     }
   }
+
 
 }

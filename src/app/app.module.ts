@@ -7,13 +7,16 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { MenuPage } from '../pages/menu/menu';
-import { ExpandableComponent } from '../components/expandable/expandable'
+import { ReviewOrderPage } from "../pages/review-order/review-order";
+import {AccordionComponent} from '../components/accordion/accordion';
+
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     MenuPage,
-    ExpandableComponent
+    ReviewOrderPage,
+    AccordionComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +26,8 @@ import { ExpandableComponent } from '../components/expandable/expandable'
   entryComponents: [
     MyApp,
     HomePage,
-    MenuPage
+    MenuPage,
+    ReviewOrderPage
   ],
   providers: [
     StatusBar,

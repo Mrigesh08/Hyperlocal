@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
-import { ExpandableComponent } from './expandable/expandable';
+import { AccordionComponent } from './accordion/accordion';
 @NgModule({
-	declarations: [ExpandableComponent],
+	declarations: [
+    AccordionComponent],
 	imports: [],
-	exports: [ExpandableComponent]
+	exports: [
+    AccordionComponent]
 })
 export class ComponentsModule {}
