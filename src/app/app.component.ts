@@ -3,9 +3,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Config, Nav, Platform } from 'ionic-angular';
 
+// import { FirstRunPage } from '../pages';
+
 import { TutorialPage } from '../pages/tutorial/tutorial';
 
-// import { HomePage } from '../pages/home/home';
+import { HomePage } from '../pages/home/home';
+
+import { MorphlistPage } from '../pages/morphlist/morphlist'
 
 @Component({
   templateUrl: 'app.html'
