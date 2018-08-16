@@ -13,38 +13,37 @@
 </ion-header>
 
 <ion-content no-padding>
-
+  
   <ion-slides autoplay="3000" loop="true" speed="1000" style="max-height:250px;">
     <ion-slide *ngFor="let slide of slides">
       <img [src]="slide.image" class="slide-image"/>
     </ion-slide>
   </ion-slides>
 
-  <div padding>
+  <div>
+    <ion-segment [(ngModel)]="pet">
+      <ion-segment-button value="kittens">
+        Kittens
+      </ion-segment-button>
+      <ion-segment-button value="puppies">
+        Puppies
+      </ion-segment-button>
+    </ion-segment>
+  </div>
 
-  <ul id="myScrollspy" class="nav nav-tabs" data-spy="affix" data-offset-top="250px" style="margin-top:20px;">
-    <li class="active"><a data-toggle="tab" href="#menu1">Menu1</a></li>
-    <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
-    <li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
-  </ul>
-  <div class="tab-content">
-    <div id="menu1" class="tab-pane fade in active">
+  <div [ngSwitch]="pet">
+    <div *ngSwitchCase="'puppies'" fade in>
       <accordion *ngFor="let item of items"
               image="{{item.image}}" name="{{item.name}}" price="{{item.price}}" description="{{item.description}}">
       </accordion>
     </div>
-    <div id="menu2" class="tab-pane fade">
-      <accordion *ngFor="let item of items"
-              image="{{item.image}}" name="{{item.name}}" price="{{item.price}}" description="{{item.description}}">
-      </accordion>
-    </div>
-    <div id="menu3" class="tab-pane">
+    <div *ngSwitchCase="'kittens'">
       <accordion *ngFor="let item of items"
               image="{{item.image}}" name="{{item.name}}" price="{{item.price}}" description="{{item.description}}">
       </accordion>
     </div>
   </div>
-  </div>
+  
   <ion-fab right bottom>
     <button ion-fab (click) = "reviewOrder()"><ion-icon name="cart"></ion-icon></button>
     <!-- <ion-fab-list side="top">
