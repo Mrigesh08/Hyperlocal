@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, MenuController, NavController, Platform } from 'ionic-angular';
-import { HomePage } from "../home/home";
+import { WelcomePage } from "../welcome/welcome";
 
 export interface Slide {
   title: string;
@@ -40,7 +40,7 @@ export class TutorialPage {
   }
 
   startApp() {
-    this.navCtrl.setRoot(HomePage, {}, {
+    this.navCtrl.setRoot(WelcomePage, {}, {
       animate: true,
       direction: 'forward'
     });

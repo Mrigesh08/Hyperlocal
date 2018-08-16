@@ -8,9 +8,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { IonicStorageModule, Storage } from '@ionic/storage';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { SignupPage } from '../pages/signup/signup';
-import { WelcomePage } from '../pages/welcome/welcome'
+import { WelcomePage } from '../pages/welcome/welcome';
+import { MorphlistPage } from '../pages/morphlist/morphlist';
 import { UserProvider } from '../providers/user/user';
 import { OrganizationProvider } from '../providers/organization/organization';
 import { TutorialPage } from "../pages/tutorial/tutorial";
@@ -18,10 +18,10 @@ import { TutorialPage } from "../pages/tutorial/tutorial";
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
     SignupPage,
     WelcomePage,
-    TutorialPage
+    TutorialPage,
+    MorphlistPage
   ],
   imports: [
     BrowserModule,
@@ -32,10 +32,10 @@ import { TutorialPage } from "../pages/tutorial/tutorial";
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
     SignupPage,
     WelcomePage,
-    TutorialPage
+    TutorialPage,
+    MorphlistPage
   ],
   providers: [
     StatusBar,
