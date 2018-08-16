@@ -12,7 +12,7 @@
 
 </ion-header>
 
-<ion-content padding>
+<ion-content no-padding>
 
   <ion-slides autoplay="3000" loop="true" speed="1000" style="max-height:250px;">
     <ion-slide *ngFor="let slide of slides">
@@ -20,6 +20,7 @@
     </ion-slide>
   </ion-slides>
 
+  <div padding>
 
   <ul id="myScrollspy" class="nav nav-tabs" data-spy="affix" data-offset-top="250px" style="margin-top:20px;">
     <li class="active"><a data-toggle="tab" href="#menu1">Menu1</a></li>
@@ -42,6 +43,7 @@
               image="{{item.image}}" name="{{item.name}}" price="{{item.price}}" description="{{item.description}}">
       </accordion>
     </div>
+  </div>
   </div>
   <ion-fab right bottom>
     <button ion-fab (click) = "reviewOrder()"><ion-icon name="cart"></ion-icon></button>

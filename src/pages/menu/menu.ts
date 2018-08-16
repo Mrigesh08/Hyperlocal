@@ -68,7 +68,7 @@ export class MenuPage {
       },
       {
         title: "Welcome to the Docs!",
-        image: "assets/img/Menu/syo.jpg",
+        image: "assets/imgs/Menu/yo.jpg",
       }
     ];
   }
