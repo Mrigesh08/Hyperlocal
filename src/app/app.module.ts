@@ -6,16 +6,15 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { WelcomePage } from '../pages/welcome/welcome'
 import { UserProvider } from '../providers/user/user';
+import { OrganizationProvider } from '../providers/organization/organization';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    LoginPage,
     SignupPage,
     WelcomePage
   ],
@@ -27,7 +26,6 @@ import { UserProvider } from '../providers/user/user';
   entryComponents: [
     MyApp,
     HomePage,
-    LoginPage,
     SignupPage,
     WelcomePage
   ],
@@ -35,7 +33,8 @@ import { UserProvider } from '../providers/user/user';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UserProvider,  
+    UserProvider,
+    OrganizationProvider,
   ]
 })
 export class AppModule {}

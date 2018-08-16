@@ -37,8 +37,12 @@ export class SignupPage {
         .then(() => this.state = 'verifyOTP');
     else if(this.state == 'verifyOTP') {
       return this.userProvider.verifyOTP(this.OTP)
-        .then(res => {
-          if(res) this.state = 'fillProfile';
+        .then(async res => {
+          if(res) {
+            if(await this.userProvider.isProfileComplete())
+              throw Error("Not Implemented");
+            else  this.state = 'fillProfile';
+          }
           else  this.alertCtrl.create({ title: "Invalid OTP." }).present(); // Invalid OTP
         });
     }

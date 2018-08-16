@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
-import { User } from '../../models/user';
+import { User } from '../../models/customers';
 /*
   Generated class for the UserProvider provider.
 
@@ -11,17 +11,16 @@ import { User } from '../../models/user';
 export class UserProvider {
   private result: firebase.auth.ConfirmationResult;
   public user: User;
-  isAuthenticated(): User {
+  async isAuthenticated(): Promise<User> {
     var user = firebase.auth().currentUser;
-    var profile;
-    if(user !== null) {
-      firebase.database().ref('/users').child(user.uid).once('value').then(snap => profile = snap.val());
-      return new User(user.uid, profile.fullName, user.phoneNumber);
-    }
+    if(user !== null)
+      return await User.getUser(firebase.database().ref('/users').child(user.uid));
+    else return null;
   }
-  signIn(phoneNumber: string, password: string) {
-    console.log("Logging In...");
-    
+  async isProfileComplete(): Promise<boolean> {
+    var userId = firebase.auth().currentUser.uid;
+    var name = await firebase.database().ref('/users/'+userId+'/fullName').once('value').then(snap => snap.val());
+    return (!(name == null || name == "" || name == undefined));
   }
   signUp(phoneNumber: string, recaptchaVerfier: firebase.auth.RecaptchaVerifier): Promise<any> {
     console.log("Sending OTP....");
@@ -34,10 +33,10 @@ export class UserProvider {
   verifyOTP(OTP: string): Promise<boolean> {
     console.log("Verifying OTP...")
     return this.result.confirm(OTP)
-      .then(result => {
+      .then(async result => {
         console.log("OTP Verified.");
         this.result = null;
-        this.user = new User(result.user.uid, "", result.user.phoneNumber);
+        this.user = await User.getUser(firebase.database().ref('/users').child(result.user.uid))
         return firebase.database().ref('/users').child(result.user.uid)
           .set({ userId: result.user.uid, phoneNumber: result.user.phoneNumber });
       })
