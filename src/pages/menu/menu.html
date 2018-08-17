@@ -13,7 +13,7 @@
 </ion-header>
 
 <ion-content no-padding>
-  
+
   <ion-slides autoplay="3000" loop="true" speed="1000" style="max-height:250px;">
     <ion-slide *ngFor="let slide of slides">
       <img [src]="slide.image" class="slide-image"/>
@@ -21,29 +21,37 @@
   </ion-slides>
 
   <div>
-    <ion-segment [(ngModel)]="pet">
-      <ion-segment-button value="kittens">
-        Kittens
+    <ion-segment [(ngModel)]="menuTabs">
+      <ion-segment-button value="menu1">
+        Menu1
       </ion-segment-button>
-      <ion-segment-button value="puppies">
-        Puppies
+      <ion-segment-button value="menu2">
+        Menu2
+      </ion-segment-button>
+      <ion-segment-button value="menu3">
+        Menu3
       </ion-segment-button>
     </ion-segment>
   </div>
 
-  <div [ngSwitch]="pet">
-    <div *ngSwitchCase="'puppies'" fade in>
+  <div [ngSwitch]="menuTabs">
+    <div *ngSwitchCase="'menu1'">
       <accordion *ngFor="let item of items"
               image="{{item.image}}" name="{{item.name}}" price="{{item.price}}" description="{{item.description}}">
       </accordion>
     </div>
-    <div *ngSwitchCase="'kittens'">
+    <div *ngSwitchCase="'menu2'" fade in>
+      <accordion *ngFor="let item of items"
+              image="{{item.image}}" name="{{item.name}}" price="{{item.price}}" description="{{item.description}}">
+      </accordion>
+    </div>
+    <div *ngSwitchCase="'menu3'" fade in>
       <accordion *ngFor="let item of items"
               image="{{item.image}}" name="{{item.name}}" price="{{item.price}}" description="{{item.description}}">
       </accordion>
     </div>
   </div>
-  
+
   <ion-fab right bottom>
     <button ion-fab (click) = "reviewOrder()"><ion-icon name="cart"></ion-icon></button>
     <!-- <ion-fab-list side="top">

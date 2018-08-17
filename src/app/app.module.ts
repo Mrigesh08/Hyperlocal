@@ -14,7 +14,6 @@ import { MorphlistPage } from '../pages/morphlist/morphlist';
 import { UserProvider } from '../providers/user/user';
 import { OrganizationProvider } from '../providers/organization/organization';
 import { TutorialPage } from "../pages/tutorial/tutorial";
-import { HomePage } from '../pages/home/home';
 import { MenuPage } from '../pages/menu/menu';
 import { ReviewOrderPage } from "../pages/review-order/review-order";
 import {AccordionComponent} from '../components/accordion/accordion';
@@ -26,7 +25,6 @@ import {AccordionComponent} from '../components/accordion/accordion';
     WelcomePage,
     TutorialPage,
     MorphlistPage,
-    HomePage,
     MenuPage,
     ReviewOrderPage,
     AccordionComponent
@@ -44,7 +42,6 @@ import {AccordionComponent} from '../components/accordion/accordion';
     WelcomePage,
     TutorialPage,
     MorphlistPage,
-    HomePage,
     MenuPage,
     ReviewOrderPage
   ],

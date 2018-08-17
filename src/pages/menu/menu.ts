@@ -18,9 +18,14 @@ export class MenuPage {
   items : any[];
   title : any;
   slides : any[];
+  outletData: any;
   reviewOrderPage : any = ReviewOrderPage;
+  menuTabs : any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.title = "Menu";
+    this.outletData=navParams.get('data');
+    this.menuTabs = "menu1";
+    console.log(this.outletData.name);
     this.items = [
       {
         image : "assets/imgs/Menu/yo.jpg",

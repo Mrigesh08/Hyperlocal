@@ -15,6 +15,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ReviewOrderPage implements OnInit{
   couponExpanded : boolean = false;
+  code : string;
   @ViewChild("cc2") couponEntry : any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public renderer : Renderer) {

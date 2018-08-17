@@ -6,7 +6,7 @@ import * as firebase from 'firebase';
 import { firebaseConfig } from './environment';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { TutorialPage } from '../pages/tutorial/tutorial';
-import { MorphlistPage } from '../pages/morphlist/morphlist'
+import { MorphlistPage } from '../pages/morphlist/morphlist';
 import { Storage } from '@ionic/storage';
 
 @Component({
@@ -16,6 +16,7 @@ export class MyApp {
   rootPage:any ;
   tutorialShownAlready : boolean = false;
   loggedInAlready : boolean = false;
+  devMode : boolean = true;
   @ViewChild(Nav) nav: Nav;
   // pages: Array<{ title: string, component: any}>;
 
@@ -33,28 +34,33 @@ export class MyApp {
       firebase.initializeApp(firebaseConfig);
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.storage.get("tutorialShownAlready").then((val)=>{
-        if(val){
-          this.tutorialShownAlready = val;
-        }
-        else{
-          this.storage.set("tutorialShownAlready",true);
-        }
-      });
-      this.storage.get("loggedInAlready").then((val)=>{
-        if(val){
-          this.loggedInAlready = val;
-        }
-        // remember to set this value to true on successful login
-      });
-      if(!this.tutorialShownAlready){
-        this.rootPage = TutorialPage;
-      }
-      else if(!this.loggedInAlready){
-        this.rootPage = WelcomePage;
+      if(this.devMode){
+        this.rootPage = MorphlistPage;
       }
       else{
-        this.rootPage = MorphlistPage;
+        this.storage.get("tutorialShownAlready").then((val)=>{
+          if(val){
+            this.tutorialShownAlready = val;
+          }
+          else{
+            this.storage.set("tutorialShownAlready",true);
+          }
+        });
+        this.storage.get("loggedInAlready").then((val)=>{
+          if(val){
+            this.loggedInAlready = val;
+          }
+          // remember to set this value to true on successful login
+        });
+        if(!this.tutorialShownAlready){
+          this.rootPage = TutorialPage;
+        }
+        else if(!this.loggedInAlready){
+          this.rootPage = WelcomePage;
+        }
+        else{
+          this.rootPage = MorphlistPage;
+        }
       }
     });
   }

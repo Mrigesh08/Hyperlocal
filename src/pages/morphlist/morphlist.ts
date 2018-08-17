@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { MenuPage } from '../menu/menu';
 /**
  * Generated class for the MorphlistPage page.
  *
@@ -40,4 +40,9 @@ export class MorphlistPage {
     console.log('ionViewDidLoad MorphlistPage');
   }
 
+  openPage(outlet){
+    this.navCtrl.setRoot(MenuPage , {
+      data : outlet
+    });
+  }
 }
