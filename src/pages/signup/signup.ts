@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, AlertController } from 'ionic-angular';
 import * as firebase from 'firebase';
 import { UserProvider } from '../../providers/user/user';
+import { MorphlistPage } from '../morphlist/morphlist';
 
 /**
  * Generated class for the LoginPage page.
@@ -22,7 +23,7 @@ export class SignupPage {
   public password: string;
   public state: string;
   public OTP: string;
-  constructor(public userProvider: UserProvider, public alertCtrl: AlertController) {
+  constructor(public userProvider: UserProvider, public navCtrl: NavController, public alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
@@ -40,7 +41,7 @@ export class SignupPage {
         .then(async res => {
           if(res) {
             if(await this.userProvider.isProfileComplete())
-              throw Error("Not Implemented");
+              this.navCtrl.setRoot(MorphlistPage);
             else  this.state = 'fillProfile';
           }
           else  this.alertCtrl.create({ title: "Invalid OTP." }).present(); // Invalid OTP

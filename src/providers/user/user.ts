@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Storage } from '@ionic/storage';
 import * as firebase from 'firebase';
 import { User } from '../../models/customers';
 /*
@@ -11,6 +12,8 @@ import { User } from '../../models/customers';
 export class UserProvider {
   private result: firebase.auth.ConfirmationResult;
   public user: User;
+
+  constructor(public storage: Storage) {}
   async isAuthenticated(): Promise<User> {
     var user = firebase.auth().currentUser;
     if(user !== null)
@@ -36,7 +39,8 @@ export class UserProvider {
       .then(async result => {
         console.log("OTP Verified.");
         this.result = null;
-        this.user = await User.getUser(firebase.database().ref('/users').child(result.user.uid))
+        this.user = await User.getUser(firebase.database().ref('/users').child(result.user.uid));
+        this.storage.set("loggedInAlready", true);
         return firebase.database().ref('/users').child(result.user.uid)
           .set({ userId: result.user.uid, phoneNumber: result.user.phoneNumber });
       })

@@ -20,7 +20,7 @@ export class WelcomePage {
   signup() {
     this.navCtrl.push(SignupPage);
   }
-  tempPageTransition(){
-  	this.navCtrl.setRoot(MorphlistPage);
+  login(){
+  	this.navCtrl.setRoot(SignupPage);
   }
 }
