@@ -39,13 +39,13 @@ export class UserProvider {
       .then(async result => {
         console.log("OTP Verified.");
         this.result = null;
-        this.user = await User.getUser(firebase.database().ref('/users').child(result.user.uid));
         this.storage.set("loggedInAlready", true);
         var ref = firebase.database().ref('/users').child(result.user.uid);
-        return Promise.all([ref.child('userId').set(result.user.uid), ref.child('phoneNumber').set(result.user.phoneNumber)]);
+        return Promise.all([ref.child('userId').set(result.user.uid), ref.child('phoneNumber').set(result.user.phoneNumber)])
+          .then(async () => this.user = await User.getUser(firebase.database().ref('/users').child(result.user.uid)));
       })
       .then(snap => true)
-      .catch(err => false);
+      .catch(err => { console.log(err); return false; });
   }
   setFullName(fullName: string): Promise<any> {
     console.log("Setting fullName...");

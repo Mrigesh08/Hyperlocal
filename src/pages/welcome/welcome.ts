@@ -21,6 +21,6 @@ export class WelcomePage {
     this.navCtrl.push(SignupPage);
   }
   login(){
-  	this.navCtrl.setRoot(SignupPage);
+  	this.navCtrl.push(SignupPage);
   }
 }

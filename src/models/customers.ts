@@ -4,8 +4,8 @@ import { Item, Customization } from './business';
 export class User {
   constructor(
       public userRef: firebase.database.Reference,
-      public userId: string, 
-      public fullName: string, 
+      public userId: string,
+      public fullName: string,
       public phoneNumber: string,
       public orders: Order[],
       public cart: Cart
