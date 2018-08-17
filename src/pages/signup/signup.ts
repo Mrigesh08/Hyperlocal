@@ -49,7 +49,8 @@ export class SignupPage {
     }
     else if(this.state == 'fillProfile') {
       return Promise.all([this.userProvider.setFullName(this.fullName),
-        this.userProvider.setPassword(this.password)]);
+        this.userProvider.setPassword(this.password)])
+        .then(() => this.navCtrl.setRoot(MorphlistPage));
     }
   }
 }

@@ -41,8 +41,8 @@ export class UserProvider {
         this.result = null;
         this.user = await User.getUser(firebase.database().ref('/users').child(result.user.uid));
         this.storage.set("loggedInAlready", true);
-        return firebase.database().ref('/users').child(result.user.uid)
-          .set({ userId: result.user.uid, phoneNumber: result.user.phoneNumber });
+        var ref = firebase.database().ref('/users').child(result.user.uid);
+        return Promise.all([ref.child('userId').set(result.user.uid), ref.child('phoneNumber').set(result.user.phoneNumber)]);
       })
       .then(snap => true)
       .catch(err => false);
