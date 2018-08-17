@@ -1,0 +1,26 @@
+<!-- Generated template for the AccordionComponent component -->
+
+<ion-card  style="padding-bottom:0;">
+  <div class="menucard-img" (click)="toggleCard()">
+    <img src="{{ image }}">
+    <!-- <p>{{ image }}</p> -->
+    <div class="menucard-price">  {{ price }}</div>
+  </div>
+  <ion-card-header >
+    <div class="item-name" (click)="toggleCard()">{{ name }}</div>
+    <div style="float:right;">
+      <button ion-button clear medium color="primary" round class="btn-add">ADD</button>
+    </div>
+  </ion-card-header>
+  <ion-card-content class="item-description" (click)="toggleCard()">
+    {{ description }}
+  </ion-card-content>
+
+  <ion-card-content #cc class="hiddenContent" style="padding-top:0px; padding-bottom:0px;">
+    <div style="width:100%;overflow:none; text-align:center;">
+      <h3>Customize</h3>
+    </div>
+    <div style="padding-bottom:1em;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+    <ng-content></ng-content>
+  </ion-card-content>
+</ion-card>

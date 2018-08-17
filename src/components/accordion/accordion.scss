@@ -1,0 +1,45 @@
+accordion {
+  ion-card-header{
+    padding-left:1em;
+    padding-top:1em;
+    padding-bottom:0;
+    font-size:3em;
+    color : #000;
+  }
+  .btn-add{
+    padding-top : 0px;
+    padding-bottom : 0px;
+    font-size: 1em;
+  }
+
+  .hiddenContent{
+    max-height: 0px;
+  }
+  .menucard-img{
+    position: relative;
+    min-height: 2em;
+    padding-left: 0.2em;
+    padding-right: 0.2em;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+  }
+  .menucard-price {
+    position: absolute;
+    color: #eee;
+    text-shadow: 1px 1px #aaa;
+    font-size : 1.5em;
+    background: transparent;
+    bottom: 0.2em;
+    left:1.5em;
+  }
+  .item-description{
+    padding-top:1em;
+  }
+
+  .item-name{
+    float:left;
+    padding-top:0.3em;
+    color:#000;
+    font-size:1.3em;
+  }
+}

@@ -14,6 +14,10 @@ import { MorphlistPage } from '../pages/morphlist/morphlist';
 import { UserProvider } from '../providers/user/user';
 import { OrganizationProvider } from '../providers/organization/organization';
 import { TutorialPage } from "../pages/tutorial/tutorial";
+import { HomePage } from '../pages/home/home';
+import { MenuPage } from '../pages/menu/menu';
+import { ReviewOrderPage } from "../pages/review-order/review-order";
+import {AccordionComponent} from '../components/accordion/accordion';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,11 @@ import { TutorialPage } from "../pages/tutorial/tutorial";
     SignupPage,
     WelcomePage,
     TutorialPage,
-    MorphlistPage
+    MorphlistPage,
+    HomePage,
+    MenuPage,
+    ReviewOrderPage,
+    AccordionComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +43,10 @@ import { TutorialPage } from "../pages/tutorial/tutorial";
     SignupPage,
     WelcomePage,
     TutorialPage,
-    MorphlistPage
+    MorphlistPage,
+    HomePage,
+    MenuPage,
+    ReviewOrderPage
   ],
   providers: [
     StatusBar,

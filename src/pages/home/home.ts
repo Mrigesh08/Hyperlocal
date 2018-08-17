@@ -8,7 +8,10 @@ import { WelcomePage } from '../welcome/welcome';
 export class HomePage {
   constructor(public navCtrl: NavController) {
   }
-  login() {
-    this.navCtrl.setRoot(WelcomePage);
+  menuPage(){
+    this.navCtrl.push(MenuPage);
+  }
+  reviewPage(){
+    this.navCtrl.push(ReviewOrderPage);
   }
 }
