@@ -22,13 +22,13 @@
 
   <div>
     <ion-segment [(ngModel)]="menuTabs">
-      <ion-segment-button value="menu1">
+      <ion-segment-button value="menu1" style="color : #000; border-bottom : 2px solid #000;">
         Menu1
       </ion-segment-button>
-      <ion-segment-button value="menu2">
+      <ion-segment-button value="menu2" style="color : #000; border-bottom : 2px solid #000;">
         Menu2
       </ion-segment-button>
-      <ion-segment-button value="menu3">
+      <ion-segment-button value="menu3" style="color : #000; border-bottom : 2px solid #000;">
         Menu3
       </ion-segment-button>
     </ion-segment>
@@ -37,23 +37,23 @@
   <div [ngSwitch]="menuTabs">
     <div *ngSwitchCase="'menu1'">
       <accordion *ngFor="let item of items"
-              image="{{item.image}}" name="{{item.name}}" price="{{item.price}}" description="{{item.description}}">
+              image="{{item.image}}" name="{{item.name}}" price="{{item.price}}" description="{{item.description}}" btnColor="#000">
       </accordion>
     </div>
-    <div *ngSwitchCase="'menu2'" fade in>
+    <div *ngSwitchCase="'menu2'">
       <accordion *ngFor="let item of items"
-              image="{{item.image}}" name="{{item.name}}" price="{{item.price}}" description="{{item.description}}">
+              image="{{item.image}}" name="{{item.name}}" price="{{item.price}}" description="{{item.description}}" btnColor="#000">
       </accordion>
     </div>
-    <div *ngSwitchCase="'menu3'" fade in>
+    <div *ngSwitchCase="'menu3'">
       <accordion *ngFor="let item of items"
-              image="{{item.image}}" name="{{item.name}}" price="{{item.price}}" description="{{item.description}}">
+              image="{{item.image}}" name="{{item.name}}" price="{{item.price}}" description="{{item.description}}" btnColor="#000">
       </accordion>
     </div>
   </div>
 
-  <ion-fab right bottom>
-    <button ion-fab (click) = "reviewOrder()"><ion-icon name="cart"></ion-icon></button>
+  <ion-fab right bottom >
+    <button ion-fab style="background-color : #000; " (click) = "reviewOrder()"><ion-icon name="cart"></ion-icon></button>
     <!-- <ion-fab-list side="top">
       <button ion-fab><ion-icon name="logo-facebook"></ion-icon></button>
       <button ion-fab><ion-icon name="logo-twitter"></ion-icon></button>

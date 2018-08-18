@@ -9,7 +9,7 @@
   <ion-card-header >
     <div class="item-name" (click)="toggleCard()">{{ name }}</div>
     <div style="float:right;">
-      <button ion-button clear medium color="primary" round class="btn-add">ADD</button>
+      <button #addbutton ion-button clear medium round class="btn-add">ADD</button>
     </div>
   </ion-card-header>
   <ion-card-content class="item-description" (click)="toggleCard()">
