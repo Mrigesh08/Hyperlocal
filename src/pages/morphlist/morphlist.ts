@@ -19,17 +19,23 @@ export class MorphlistPage {
 		{
 			name: "Dominos",
 			image: "https://corporate.dominos.co.uk/Media/Default/Image%20Library/Image%20library%20-%20logos/RGB_White_Type_Tile_Only_Small.png",
+      menuImage : "assets/imgs/Menu/dominos.jpg",
+      themeColor : "#0078AC",
 			subtext: "Pizzas!!!",
 		},
 		{
 			name: "McDonald's",
 			image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Mcdonald%27s_logo.svg/2000px-Mcdonald%27s_logo.svg.png",
-			subtext: "Burgers!!!",
+      menuImage : "assets/imgs/Menu/McD.jpg",
+      themeColor : "#FFF10A",
+      subtext: "Burgers!!!",
 		},
 		{
 			name: "KFC",
 			image: "https://upload.wikimedia.org/wikipedia/en/thumb/b/bf/KFC_logo.svg/1200px-KFC_logo.svg.png",
-			subtext: "Chicken!!!",
+      menuImage : "assets/imgs/Menu/KFC.jpg",
+      themeColor : "#A3080C",
+      subtext: "Chicken!!!",
 		},
 	]
 

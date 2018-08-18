@@ -29,7 +29,6 @@ export class AccordionComponent implements OnInit{
 
   }
   toggleCard(){
-    console.log(this.btnColor);
     if(this.cardExpanded){
       this.renderer.setElementStyle(this.customizationContent.nativeElement,"max-height","0px");
     }
