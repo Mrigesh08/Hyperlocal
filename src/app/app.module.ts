@@ -4,6 +4,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { HTTP } from '@ionic-native/http';
 
 import { IonicStorageModule, Storage } from '@ionic/storage';
 
@@ -17,6 +18,7 @@ import { TutorialPage } from "../pages/tutorial/tutorial";
 import { MenuPage } from '../pages/menu/menu';
 import { ReviewOrderPage } from "../pages/review-order/review-order";
 import {AccordionComponent} from '../components/accordion/accordion';
+
 
 @NgModule({
   declarations: [
@@ -47,6 +49,7 @@ import {AccordionComponent} from '../components/accordion/accordion';
   ],
   providers: [
     StatusBar,
+    HTTP,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserProvider,

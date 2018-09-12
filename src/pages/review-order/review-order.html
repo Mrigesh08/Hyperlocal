@@ -33,12 +33,30 @@
       Order Summary
     </ion-card-header>
     <ion-card-content>
-      <ion-list text-center>
-        <ion-item>
-          <div >
-            <p style="float:left;">ITEM name</p>
-            <p style="float:right;">Rs. 345</p>
+      <ion-list>
+        <ion-item *ngFor="let item of cartItems; let i = index" id="{{'item'+i}}">
+          <div style="width:100%;">
+            <div style="float:left;width: 50%;">
+              {{ item.name }}
+            </div>
+            <div style="float:right;">
+              {{ item.finalPrice }}
+            </div>
+
           </div>
+          <div style="float:right;width:100%;padding-top:0.5em;">
+            <div style="float:left;width : 50%;">
+              <button ion-button clean medium round (click)="increaseQuantity(i)">
+                <ion-icon name="add" style="color:#fff;" class="iconClass"></ion-icon>
+              </button>
+              <span id="{{'qty'+i}}">{{item.quantity}}</span>
+              <button ion-button clean medium round (click)="decreaseQuantity(i)">
+                <ion-icon name="remove" style="color:#fff;"></ion-icon>
+              </button>
+            </div>
+            <ion-icon name="trash" style="color:#a00;float:right;font-size:2em;" (click)="removeItem(i)"></ion-icon>
+          </div>
+          <hr>
         </ion-item>
         <ion-item>
           <p style="float:left; font-weight: bold;">Order Total</p>

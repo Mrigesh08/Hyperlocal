@@ -13,7 +13,7 @@
 </ion-header>
 
 <ion-content no-padding>
-
+``
   <ion-slides autoplay="3000" loop="true" speed="1000" style="max-height:250px;padding-top:0px;">
     <ion-slide *ngFor="let slide of slides">
       <img [src]="slide.image" class="slide-image"/>
@@ -22,34 +22,44 @@
 
   <div>
     <ion-segment [(ngModel)]="menuTabs" #myMenuTab >
-      <ion-segment-button value="menu1">
-        Menu1
+      <ion-segment-button *ngFor = 'let item of menuItems' value="{{ item[0] }}" (tap)="contendChanged(item[0])" id="{{ item[0] }}">
+        {{ item[0] }}
       </ion-segment-button>
-      <ion-segment-button value="menu2">
+      <!-- <ion-segment-button value="burgers">
         Menu2
       </ion-segment-button>
-      <ion-segment-button value="menu3">
+      <ion-segment-button value="Pizzas">
         Menu3
-      </ion-segment-button>
+      </ion-segment-button> -->
     </ion-segment>
   </div>
 
   <div [ngSwitch]="menuTabs">
-    <div *ngSwitchCase="'menu1'">
+    <!-- <div *ngFor='let menuItem of menuItems'> -->
+      <ng-container *ngFor="let menuItem of menuItems; let i=index">
+        <div *ngSwitchCase="menuItem[0]">
+
+          <accordion *ngFor="let item of menuItem[1]; let j = index"
+            image="{{item.imageURL}}" name="{{item.name}}" price="{{item.price}}" description="{{item.description}}" btnColor="{{themeColor}}">
+
+              <div addButton><button #addbutton ion-button clear medium round class="btn-add" (click)=addItemToCart(i,j)>ADD</button></div>
+              <div body>This goes to the body instead</div>
+
+          </accordion>
+        </div>
+      </ng-container>
+      <!-- </div> -->
+    <!-- </div> -->
+    <!-- <div *ngSwitchCase="'burgers'">
       <accordion *ngFor="let item of items"
               image="{{item.menuImage}}" name="{{item.name}}" price="{{item.price}}" description="{{item.description}}" btnColor="{{themeColor}}">
       </accordion>
     </div>
-    <div *ngSwitchCase="'menu2'">
+    <div *ngSwitchCase="'Pizzas'">
       <accordion *ngFor="let item of items"
               image="{{item.menuImage}}" name="{{item.name}}" price="{{item.price}}" description="{{item.description}}" btnColor="{{themeColor}}">
       </accordion>
-    </div>
-    <div *ngSwitchCase="'menu3'">
-      <accordion *ngFor="let item of items"
-              image="{{item.menuImage}}" name="{{item.name}}" price="{{item.price}}" description="{{item.description}}" btnColor="{{themeColor}}">
-      </accordion>
-    </div>
+    </div> -->
   </div>
 
   <ion-fab right bottom >
@@ -61,5 +71,4 @@
       <button ion-fab><ion-icon name="logo-googleplus"></ion-icon></button>
     </ion-fab-list> -->
   </ion-fab>
-  <ion-content>
 </ion-content>

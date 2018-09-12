@@ -47,7 +47,7 @@ export class MorphlistPage {
   }
 
   openPage(outlet){
-    this.navCtrl.setRoot(MenuPage , {
+    this.navCtrl.push(MenuPage , {
       data : outlet
     });
   }

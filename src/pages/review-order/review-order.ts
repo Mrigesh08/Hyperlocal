@@ -15,10 +15,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ReviewOrderPage implements OnInit{
   couponExpanded : boolean = false;
+  cartItems : any = [];
   code : string;
   @ViewChild("cc2") couponEntry : any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public renderer : Renderer) {
+    this.cartItems = navParams.get("data");
   }
 
   ngOnInit(){
@@ -30,7 +32,6 @@ export class ReviewOrderPage implements OnInit{
     }
     else{
       this.renderer.setElementStyle(this.couponEntry.nativeElement,"max-height","700px");
-
     }
     this.couponExpanded =  ! this.couponExpanded;
 
@@ -38,5 +39,17 @@ export class ReviewOrderPage implements OnInit{
   submitCoupon(){
       console.log(this.code);
   }
+  removeItem(i){
+    console.log("removeiong "+i);
+  }
+  increaseQuantity(i){
+    console.log("increasing "+i);
+    this.cartItems[i].quantity = this.cartItems[i].quantity+1;
 
+  }
+  decreaseQuantity(i){
+    if(this.cartItems[i].quantity != 1){
+      this.cartItems[i].quantity = this.cartItems[i].quantity-1;
+    }
+  }
 }
