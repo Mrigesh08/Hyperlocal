@@ -1,4 +1,4 @@
-import { Component, ViewChild, Renderer, OnInit, ElementRef} from '@angular/core';
+import { Component, ViewChild, Renderer, Renderer2, OnInit, ElementRef} from '@angular/core';
 import { IonicPage, NavController, NavParams} from 'ionic-angular';
 // import { AccordionComponent } from '../../components/accordion/accordion';
 import { ReviewOrderPage } from "../review-order/review-order";
@@ -26,7 +26,7 @@ export class MenuPage implements OnInit{
   themeColor : any;
   @ViewChild( "cartButton", {read : ElementRef}) cartButton: ElementRef;
   @ViewChild( "myMenuTab" , {read : ElementRef} ) menuTabsTheme : ElementRef;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public renderer : Renderer, public http: HTTP) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public renderer : Renderer, public renderer2 : Renderer2, public http: HTTP) {
     this.title = "Menu";
     this.outletData = navParams.get('data');
     // this.menuTabs = "burgers";
@@ -91,7 +91,7 @@ export class MenuPage implements OnInit{
   addItemToCart(i,j){
     console.log("i="+i+" j="+j);
     console.log("Added "+JSON.stringify(this.menuItems[i][1][j]));
-    let x=this.menuItems[i][1][j];
+    let x=JSON.parse(JSON.stringify(this.menuItems[i][1][j]));
     x["finalPrice"]=80;
     x["quantity"]=1;
     this.cartItems.push(x);
