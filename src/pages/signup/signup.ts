@@ -32,10 +32,10 @@ export class SignupPage {
     this.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {size: 'invisible'});
   }
 
-  signup(): Promise<any> {
+  async signup(): Promise<any> {
     if(this.state == 'signup')
       return this.userProvider.signUp(this.phoneNumber, this.recaptchaVerifier)
-        .then(() => this.state = 'verifyOTP');
+        .then(() => this.state = 'fillProfile');
     else if(this.state == 'verifyOTP') {
       return this.userProvider.verifyOTP(this.OTP)
         .then(async res => {
@@ -48,9 +48,12 @@ export class SignupPage {
         });
     }
     else if(this.state == 'fillProfile') {
-      return Promise.all([this.userProvider.setFullName(this.fullName),
-        this.userProvider.setPassword(this.password)])
-        .then(() => this.navCtrl.setRoot(MorphlistPage));
+      if(await this.userProvider.isProfileComplete())
+          this.navCtrl.setRoot(MorphlistPage);
+      else
+        return Promise.all([this.userProvider.setFullName(this.fullName),
+          this.userProvider.setPassword(this.password)])
+          .then(() => this.navCtrl.setRoot(MorphlistPage));
     }
   }
 }

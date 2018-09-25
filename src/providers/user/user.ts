@@ -27,11 +27,14 @@ export class UserProvider {
   }
   signUp(phoneNumber: string, recaptchaVerfier: firebase.auth.RecaptchaVerifier): Promise<any> {
     console.log("Sending OTP....");
-    return firebase.auth().signInWithPhoneNumber(phoneNumber, recaptchaVerfier)
+    return firebase.database().ref('/users/' + phoneNumber + '/phoneNumber').set(phoneNumber)
+    .then(snap => this.user.phoneNumber = this.user.userId = phoneNumber)
+    .then(() => console.log("Sign Up successful."));
+    /*return firebase.auth().signInWithPhoneNumber(phoneNumber, recaptchaVerfier)
       .then(result => {
         this.result = result;
         console.log("OTP Sent...");
-      });
+      });*/
   }
   verifyOTP(OTP: string): Promise<boolean> {
     console.log("Verifying OTP...")
