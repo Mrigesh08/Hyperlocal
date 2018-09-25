@@ -20,33 +20,45 @@
   </ion-slides>
 
 
-  <div *ngIf="categoryTabs == 'Dominos'">
+  <div *ngIf="categoryTabs == 'PIZZACO'">
     <ion-segment #myMenuTab [(ngModel)]="menuTabs">
-      <ion-segment-button value="burgers">
-        burgers
-      </ion-segment-button>
       <ion-segment-button value="Pizzas">
         Pizzas
       </ion-segment-button>
+      <ion-segment-button value="Best Seller">
+        Best Seller
+      </ion-segment-button>
+      <ion-segment-button value="Extras">
+        Extras
+      </ion-segment-button>
+      <ion-segment-button value="Desserts">
+        Desserts
+      </ion-segment-button>
     </ion-segment>
   </div>
-  <div *ngIf="categoryTabs == 'McDonalds'">
+  <div *ngIf="categoryTabs == 'BURGERCO'">
     <ion-segment #myMenuTab [(ngModel)]="menuTabs">
-      <ion-segment-button value="burgers">
-        burgers2
+      <ion-segment-button value="BurgerMenu">
+        Burgers
       </ion-segment-button>
-      <ion-segment-button value="Pizzas">
-        Pizzas2
+      <ion-segment-button value="SideMenu">
+        Sides
+      </ion-segment-button>
+      <ion-segment-button value="ExtrasMenu">
+        Extras
       </ion-segment-button>
     </ion-segment>
   </div>
-  <div *ngIf="categoryTabs == 'KFC'">
+  <div *ngIf="categoryTabs == 'CHICKENCO'">
     <ion-segment #myMenuTab [(ngModel)]="menuTabs">
-      <ion-segment-button value="burgers">
-        burgers3
+      <ion-segment-button value="Chicken">
+        Chicken
       </ion-segment-button>
-      <ion-segment-button value="Pizzas">
-        Pizzas3
+      <ion-segment-button value="Desserts">
+        Desserts
+      </ion-segment-button>
+      <ion-segment-button value="Extras">
+        Extras
       </ion-segment-button>
     </ion-segment>
   </div>
@@ -54,10 +66,10 @@
   <div [ngSwitch]="menuTabs">
     <!-- <div *ngFor='let menuItem of menuItems'> -->
       <ng-container *ngFor="let menuItem of menuItems; let i=index">
-        <div *ngSwitchCase="menuItem[0]">
+        <div *ngSwitchCase="menuItem.tabName">
 
-          <accordion *ngFor="let item of menuItem[1]; let j = index"
-            image="{{item.imageURL}}" name="{{item.name}}" price="{{item.price}}" description="{{item.description}}" btnColor="{{themeColor}}">
+          <accordion *ngFor="let item of menuItem.menuItems; let j = index"
+            image="{{'http://contentholmes.com/'+item.imageURL}}" name="{{item.name}}" price="{{'Rs '+item.price}}" description="{{item.description}}" btnColor="{{themeColor}}">
 
               <div addButton><button #addbutton ion-button clear medium round class="btn-add" (click)=addItemToCart(i,j)>ADD</button></div>
               <div body>This goes to the body instead</div>

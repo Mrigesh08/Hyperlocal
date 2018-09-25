@@ -53,7 +53,7 @@ export class MenuPage implements OnInit{
       // this.items.push(x);
       this.slides.push(y);
     }
-    this.http.get('http://localhost:3000/getMenu',{"orgID" : "McD"}, {})
+    this.http.get('http://contentholmes.com/getMenu',{"orgID" : this.outletData.name}, {})
     .then(
       data => {
         console.log("datar");
@@ -95,7 +95,7 @@ export class MenuPage implements OnInit{
       data : this.cartItems
     });
   }
-  contendChanged(val, event){
+  contentChanged(val, event){
     this.menuTabs=val;
     let segments = event.target.parentNode.children;
     let len = segments.length;
@@ -106,9 +106,9 @@ export class MenuPage implements OnInit{
   }
   addItemToCart(i,j){
     console.log("i="+i+" j="+j);
-    console.log("Added "+JSON.stringify(this.menuItems[i][1][j]));
-    let x=JSON.parse(JSON.stringify(this.menuItems[i][1][j]));
-    x["finalPrice"]=80;
+    console.log("Added "+JSON.stringify(this.menuItems[i].menuItems[j]));
+    let x=JSON.parse(JSON.stringify(this.menuItems[i].menuItems[j]));
+    x["finalPrice"]=x.price;
     x["quantity"]=1;
     this.cartItems.push(x);
   }
