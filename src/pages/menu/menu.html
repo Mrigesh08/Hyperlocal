@@ -19,17 +19,35 @@
     </ion-slide>
   </ion-slides>
 
-  <div>
-    <ion-segment [(ngModel)]="menuTabs" #myMenuTab >
-      <ion-segment-button *ngFor = 'let item of menuItems' value="{{ item[0] }}" (tap)="contendChanged(item[0])" id="{{ item[0] }}">
-        {{ item[0] }}
-      </ion-segment-button>
-      <!-- <ion-segment-button value="burgers">
-        Menu2
+
+  <div *ngIf="categoryTabs == 'Dominos'">
+    <ion-segment #myMenuTab [(ngModel)]="menuTabs">
+      <ion-segment-button value="burgers">
+        burgers
       </ion-segment-button>
       <ion-segment-button value="Pizzas">
-        Menu3
-      </ion-segment-button> -->
+        Pizzas
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+  <div *ngIf="categoryTabs == 'McDonalds'">
+    <ion-segment #myMenuTab [(ngModel)]="menuTabs">
+      <ion-segment-button value="burgers">
+        burgers2
+      </ion-segment-button>
+      <ion-segment-button value="Pizzas">
+        Pizzas2
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+  <div *ngIf="categoryTabs == 'KFC'">
+    <ion-segment #myMenuTab [(ngModel)]="menuTabs">
+      <ion-segment-button value="burgers">
+        burgers3
+      </ion-segment-button>
+      <ion-segment-button value="Pizzas">
+        Pizzas3
+      </ion-segment-button>
     </ion-segment>
   </div>
 
@@ -61,13 +79,18 @@
     </div> -->
   </div>
 
-  <ion-fab right bottom >
-    <button  #cartButton ion-fab (click) = "reviewOrder()"><ion-icon name="cart"></ion-icon></button>
-    <!-- <ion-fab-list side="top">
-      <button ion-fab><ion-icon name="logo-facebook"></ion-icon></button>
-      <button ion-fab><ion-icon name="logo-twitter"></ion-icon></button>
-      <button ion-fab><ion-icon name="logo-vimeo"></ion-icon></button>
-      <button ion-fab><ion-icon name="logo-googleplus"></ion-icon></button>
-    </ion-fab-list> -->
-  </ion-fab>
+    <ion-fab right bottom id="cart-btn">
+      <ion-badge color="danger" id="cart-badge" *ngIf="cartItems.length > 0">{{ cartItems.length }}</ion-badge>
+      <button  #cartButton ion-fab (click) = "reviewOrder()" >
+        <ion-icon name="cart">
+
+        </ion-icon>
+      </button>
+      <!-- <ion-fab-list side="top">
+        <button ion-fab><ion-icon name="logo-facebook"></ion-icon></button>
+        <button ion-fab><ion-icon name="logo-twitter"></ion-icon></button>
+        <button ion-fab><ion-icon name="logo-vimeo"></ion-icon></button>
+        <button ion-fab><ion-icon name="logo-googleplus"></ion-icon></button>
+      </ion-fab-list> -->
+    </ion-fab>
 </ion-content>

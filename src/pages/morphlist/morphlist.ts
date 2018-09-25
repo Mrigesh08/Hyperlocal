@@ -24,7 +24,7 @@ export class MorphlistPage {
 			subtext: "Pizzas!!!",
 		},
 		{
-			name: "McDonald's",
+			name: "McDonalds",
 			image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Mcdonald%27s_logo.svg/2000px-Mcdonald%27s_logo.svg.png",
       menuImage : "assets/imgs/Menu/McD.jpg",
       themeColor : "#FFF10A",
