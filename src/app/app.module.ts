@@ -5,7 +5,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HTTP } from '@ionic-native/http';
-
+import { Toast } from '@ionic-native/toast';
 import { IonicStorageModule, Storage } from '@ionic/storage';
 
 import { MyApp } from './app.component';
@@ -50,6 +50,7 @@ import {AccordionComponent} from '../components/accordion/accordion';
   providers: [
     StatusBar,
     HTTP,
+    Toast,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserProvider,

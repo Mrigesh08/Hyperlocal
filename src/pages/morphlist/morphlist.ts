@@ -25,7 +25,7 @@ export class MorphlistPage {
 		},
 		{
 			name: "BURGERCO",
-			image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Mcdonald%27s_logo.svg/2000px-Mcdonald%27s_logo.svg.png",
+			image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/McDonald%27s_Golden_Arches.svg/220px-McDonald%27s_Golden_Arches.svg.png",
       menuImage : "assets/imgs/Menu/McD.jpg",
       themeColor : "#FFF10A",
       subtext: "Burgers!!!",

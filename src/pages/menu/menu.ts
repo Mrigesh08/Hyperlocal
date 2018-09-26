@@ -92,7 +92,8 @@ export class MenuPage implements OnInit{
   reviewOrder(){
     console.log("cartItems" + JSON.stringify(this.cartItems));
     this.navCtrl.push(this.reviewOrderPage, {
-      data : this.cartItems
+      data : this.cartItems,
+      orgID : this.outletData.name
     });
   }
   contentChanged(val, event){

@@ -1,6 +1,7 @@
 import { Component, ViewChild, OnInit, Renderer } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { HTTP } from '@ionic-native/http';
+import { Toast } from '@ionic-native/toast';
 /**
  * Generated class for the ReviewOrderPage page.
  *
@@ -16,12 +17,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class ReviewOrderPage implements OnInit{
   couponExpanded : boolean = false;
   cartItems : any = [];
+  orgName : string = "";
   cartTotal : number = 0;
   code : string;
   @ViewChild("cc2") couponEntry : any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public renderer : Renderer) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public renderer : Renderer, public http: HTTP, public toast:Toast) {
     this.cartItems = navParams.get("data");
+    this.orgName = navParams.get("orgID");
     let sum=0;
     let i=0;
     for(i=0;i<this.cartItems.length;i++){
@@ -62,5 +65,41 @@ export class ReviewOrderPage implements OnInit{
       this.cartItems[i].quantity = this.cartItems[i].quantity-1;
       this.cartTotal -= this.cartItems[i].finalPrice;
     }
+  }
+  sendOrder(){
+    let orderOptions = {
+      orgID : this.orgName,
+      userName : "Mrigesh",
+      userPhone : "123456789",
+      items : JSON.stringify(this.cartItems)
+    };
+    this.http.get('http://contentholmes.com/addOrder/', orderOptions, {})
+    .then(
+      data => {
+        // console.log(data.data);
+        let x = JSON.parse(data.data);
+        if(x.success){
+          this.cartItems.splice(0, this.cartItems.length);
+          this.cartTotal = 0;
+          this.toast.show("Your order has been placed", "3000", "bottom").subscribe(
+            toast => {
+              console.log(toast);
+            }
+          );
+        }
+        else{
+          this.toast.show("Your order could not be placed. Please try again.", "3000", "bottom").subscribe(
+            toast => {
+              console.log(toast);
+            }
+          );
+        }
+      }
+    )
+    .catch(
+      error => {
+        console.log(error);
+      }
+    );
   }
 }
