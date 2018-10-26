@@ -18,7 +18,7 @@ import { TutorialPage } from "../pages/tutorial/tutorial";
 import { MenuPage } from '../pages/menu/menu';
 import { ReviewOrderPage } from "../pages/review-order/review-order";
 import {AccordionComponent} from '../components/accordion/accordion';
-
+import { IonicImageLoader } from 'ionic-image-loader';
 
 @NgModule({
   declarations: [
@@ -34,6 +34,7 @@ import {AccordionComponent} from '../components/accordion/accordion';
   imports: [
     BrowserModule,
     HttpClientModule,
+    IonicImageLoader.forRoot(),
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
   ],

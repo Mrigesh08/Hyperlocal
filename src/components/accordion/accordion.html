@@ -2,7 +2,8 @@
 
 <ion-card  style="padding-bottom:0;">
   <div class="menucard-img" (click)="toggleCard()">
-    <img src="{{ image }}">
+    <!-- <img src="{{ image }}"> -->
+    <img-loader src="{{ image }}" useImg class="theImage"></img-loader>
     <!-- <p>{{ image }}</p> -->
     <div class="menucard-price">  {{ price }}</div>
   </div>

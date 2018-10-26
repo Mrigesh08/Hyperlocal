@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams} from 'ionic-angular';
 // import { AccordionComponent } from '../../components/accordion/accordion';
 import { ReviewOrderPage } from "../review-order/review-order";
 import { HTTP } from '@ionic-native/http';
+import { LoadingController } from 'ionic-angular';
 /**
  * Generated class for the MenuPage page.
  *
@@ -19,18 +20,17 @@ import { HTTP } from '@ionic-native/http';
 export class MenuPage implements OnInit{
   menuItems : any = [];
   cartItems : any = [];
-
   categoryTabs : string = "";
   title : any;
   slides : any = [];
   outletData: any;
   reviewOrderPage : any = ReviewOrderPage;
-  menuTabs : any;
+  menuTabs : string = "";
   themeColor : any;
   @ViewChild( "cartButton", {read : ElementRef}) cartButton: ElementRef;
   @ViewChild( "myMenuTab" , {read : ElementRef} ) menuTabsTheme : ElementRef;
   @ViewChild( "addButton" , {read : ElementRef} ) myAddButton : ElementRef;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public renderer : Renderer, public renderer2 : Renderer2, public http: HTTP, @Inject(DOCUMENT) document) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public renderer : Renderer, public renderer2 : Renderer2, public http: HTTP, public loadingController:LoadingController) {
 
     this.title = "Menu";
     this.outletData = navParams.get('data');
@@ -38,6 +38,7 @@ export class MenuPage implements OnInit{
     this.themeColor = this.outletData.themeColor;
     this.categoryTabs=this.outletData.name;
     console.log(this.outletData.name);
+
     // let x={
     //   icon : this.outletData.image,
     //   menuImage : this.outletData.menuImage,
@@ -53,23 +54,20 @@ export class MenuPage implements OnInit{
       // this.items.push(x);
       this.slides.push(y);
     }
+    let loading = this.loadingController.create({content : "Fetching mouth watering delicacies..."});
+    loading.present();
     this.http.get('http://contentholmes.com/getMenu',{"orgID" : this.outletData.name}, {})
     .then(
       data => {
+        loading.dismissAll();
         console.log("datar");
         console.log(data.data);
         this.menuItems=JSON.parse(data.data);
-        this.menuTabs=this.menuItems[0][0];
-        console.log("MENUTABS="+this.menuTabs);
-        console.log(this.menuItems[0]);
-
+        this.menuTabs=this.menuItems[0].tabName;
         for(let i=0;i<this.menuTabsTheme.nativeElement.children.length ;i++){
           this.menuTabsTheme.nativeElement.children[i].style.color = this.themeColor;
           this.menuTabsTheme.nativeElement.children[i].style.borderBottomColor = this.themeColor;
         }
-        // document.getElementById('burgers').nativeElement.style.color = this.themeColor;
-        // this.renderer.setElementStyle(document.getElementById('burgers').nativeElement, "color" , this.themeColor);
-
       }
     )
     .catch(
@@ -82,7 +80,9 @@ export class MenuPage implements OnInit{
 
   ngOnInit(){
     // console.log( "Menu tabs theme" +     JSON.stringify(this.menuTabsTheme.nativeElement));
+
     this.renderer.setElementStyle(this.cartButton.nativeElement, "background-color" , this.themeColor);
+
     // this.menuTabs = this.menuItems[0][0];
     // this.renderer.addClass(this.menuTabsTheme.nativeElement.children[0].nativeElement,"segment active");
     // this.menuTabsTheme.nativeElement.children[0].class = "segment active";

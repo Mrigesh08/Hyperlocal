@@ -11,7 +11,10 @@ accordion {
     padding-bottom : 0px;
     font-size: 1em;
   }
-
+  .theImage{
+    min-height: 300px;
+    text-align: center;
+  }
   .hiddenContent{
     max-height: 0px;
   }
