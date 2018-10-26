@@ -24,6 +24,9 @@ export class ReviewOrderPage implements OnInit{
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public renderer : Renderer, public http: HTTP, public toast:Toast) {
     this.cartItems = navParams.get("data");
+    if(!this.cartItems){
+      this.cartItems = [];
+    }
     this.orgName = navParams.get("orgID");
     let sum=0;
     let i=0;
@@ -34,7 +37,7 @@ export class ReviewOrderPage implements OnInit{
   }
 
   ngOnInit(){
-    this.renderer.setElementStyle(this.couponEntry.nativeElement,"webkitTransition","max-height 500ms");
+    // this.renderer.setElementStyle(this.couponEntry.nativeElement,"webkitTransition","max-height 500ms");
 
   }
   toggleCard(){
@@ -81,14 +84,14 @@ export class ReviewOrderPage implements OnInit{
         if(x.success){
           this.cartItems.splice(0, this.cartItems.length);
           this.cartTotal = 0;
-          this.toast.show("Your order has been placed", "3000", "bottom").subscribe(
+          this.toast.show("Your order has been placed", "1000", "bottom").subscribe(
             toast => {
               console.log(toast);
             }
           );
         }
         else{
-          this.toast.show("Your order could not be placed. Please try again.", "3000", "bottom").subscribe(
+          this.toast.show("Your order could not be placed. Please try again.", "1000", "bottom").subscribe(
             toast => {
               console.log(toast);
             }
