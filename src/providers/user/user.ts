@@ -10,55 +10,26 @@ import { User } from '../../models/customers';
 */
 @Injectable()
 export class UserProvider {
-  private result: firebase.auth.ConfirmationResult;
   public user: User;
-
   constructor(public storage: Storage) {}
-  async isAuthenticated(): Promise<User> {
-    var user = firebase.auth().currentUser;
-    if(user !== null)
-      return await User.getUser(firebase.database().ref('/users').child(user.uid));
-    else return null;
+  signUp(phoneNumber: string, fullName: string, password: string): Promise<void> {
+    var promises = [
+      firebase.database().ref('/users/' + phoneNumber + '/phoneNumber').set(phoneNumber)
+        .then(() => console.log("Sign Up successful.")),
+      firebase.database().ref('/users/' + phoneNumber + '/fullName').set(fullName)
+        .then(() => console.log("Setting fullName successful.")),
+      firebase.database().ref('/users/' + phoneNumber + '/password').set(password)
+        .then(() => console.log("Setting password successful."))]
+    return Promise.all(promises).then(async () => {
+      this.user = await User.getUser(firebase.database().ref('/users/'+phoneNumber));
+    });
   }
-  async isProfileComplete(): Promise<boolean> {
-    var userId = firebase.auth().currentUser.uid;
-    var name = await firebase.database().ref('/users/'+userId+'/fullName').once('value').then(snap => snap.val());
-    return (!(name == null || name == "" || name == undefined));
-  }
-  signUp(phoneNumber: string, recaptchaVerfier: firebase.auth.RecaptchaVerifier): Promise<any> {
-    console.log("Sending OTP....");
-    return firebase.database().ref('/users/' + phoneNumber + '/phoneNumber').set(phoneNumber)
-    .then(snap => this.user.phoneNumber = this.user.userId = phoneNumber)
-    .then(() => console.log("Sign Up successful."));
-    /*return firebase.auth().signInWithPhoneNumber(phoneNumber, recaptchaVerfier)
-      .then(result => {
-        this.result = result;
-        console.log("OTP Sent...");
-      });*/
-  }
-  verifyOTP(OTP: string): Promise<boolean> {
-    console.log("Verifying OTP...")
-    return this.result.confirm(OTP)
-      .then(async result => {
-        console.log("OTP Verified.");
-        this.result = null;
-        this.storage.set("loggedInAlready", true);
-        var ref = firebase.database().ref('/users').child(result.user.uid);
-        return Promise.all([ref.child('userId').set(result.user.uid), ref.child('phoneNumber').set(result.user.phoneNumber)])
-          .then(async () => this.user = await User.getUser(firebase.database().ref('/users').child(result.user.uid)));
+  login(phoneNumber: string, password: string): Promise<boolean> {
+    return firebase.database().ref('/users/' + phoneNumber + '/password').once("value")
+      .then(res => res.val() == password)
+      .then(async val => {
+        if(val) this.user = await User.getUser(firebase.database().ref('/users/'+phoneNumber)); 
+        return val;
       })
-      .then(snap => true)
-      .catch(err => { console.log(err); return false; });
-  }
-  setFullName(fullName: string): Promise<any> {
-    console.log("Setting fullName...");
-    return firebase.database().ref('/users/' + this.user.userId + '/fullName').set(fullName)
-      .then(snap => this.user.fullName = fullName)
-      .then(() => console.log("Setting fullName successful."));
-  }
-  setPassword(password: string): Promise<any> {
-    console.log("Setting password...");
-    return firebase.database().ref('/users/' + this.user.userId + '/password').set(password)
-      .then(() => console.log("Setting password successful."));
   }
 }

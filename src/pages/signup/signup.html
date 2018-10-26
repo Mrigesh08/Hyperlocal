@@ -13,29 +13,28 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list [ngSwitch]="state">
-    <ion-item *ngSwitchCase="'signup'">
+  <ion-list>
+
+    <ion-item>
+      <ion-label color="primary" floating>Full Name</ion-label>
+      <ion-input [(ngModel)]="fullName" type="string"></ion-input>
+    </ion-item>
+
+    <ion-item >
       <ion-label color="primary" floating>Phone Number</ion-label>
       <ion-input [(ngModel)]="phoneNumber" type="string"></ion-input>
     </ion-item>
 
-    <ion-item *ngSwitchCase="'verifyOTP'">
+    <!-- <ion-item *ngSwitchCase="'verifyOTP'">
       <ion-label color="primary" floating>OTP</ion-label>
       <ion-input [(ngModel)]="OTP" type="string"></ion-input>
-    </ion-item>
-
-    <ion-item *ngSwitchCase="'fillProfile'">
-      <ion-label color="primary" floating>Full Name</ion-label>
-      <ion-input [(ngModel)]="fullName" type="string"></ion-input>
-    </ion-item>
+    </ion-item> -->
     
-    <ion-item *ngSwitchCase="'fillProfile'">
+    <ion-item>
       <ion-label color="primary" floating>Password</ion-label>
       <ion-input [(ngModel)]="password" type="password"></ion-input>
     </ion-item>
 
-    <div id="recaptcha-container"></div>
-    
     <ion-item>
       <button ion-button (click)="signup()" type="submit">Submit</button>
     </ion-item>

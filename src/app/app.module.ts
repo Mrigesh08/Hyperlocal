@@ -19,6 +19,7 @@ import { MenuPage } from '../pages/menu/menu';
 import { ReviewOrderPage } from "../pages/review-order/review-order";
 import {AccordionComponent} from '../components/accordion/accordion';
 import { IonicImageLoader } from 'ionic-image-loader';
+import { LoginPage } from '../pages/login/login';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { IonicImageLoader } from 'ionic-image-loader';
     MorphlistPage,
     MenuPage,
     ReviewOrderPage,
-    AccordionComponent
+    AccordionComponent,
+    LoginPage
   ],
   imports: [
     BrowserModule,
@@ -46,7 +48,8 @@ import { IonicImageLoader } from 'ionic-image-loader';
     TutorialPage,
     MorphlistPage,
     MenuPage,
-    ReviewOrderPage
+    ReviewOrderPage,
+    LoginPage
   ],
   providers: [
     StatusBar,

@@ -3,6 +3,8 @@ import { IonicPage, NavController, AlertController } from 'ionic-angular';
 import * as firebase from 'firebase';
 import { UserProvider } from '../../providers/user/user';
 import { MorphlistPage } from '../morphlist/morphlist';
+import { Storage } from '@ionic/storage';
+import { MenuPage } from '../menu/menu';
 
 /**
  * Generated class for the LoginPage page.
@@ -17,43 +19,21 @@ import { MorphlistPage } from '../morphlist/morphlist';
   templateUrl: 'signup.html',
 })
 export class SignupPage {
-  public recaptchaVerifier: firebase.auth.RecaptchaVerifier;
   public phoneNumber: string;
   public fullName: string;
   public password: string;
-  public state: string;
-  public OTP: string;
-  constructor(public userProvider: UserProvider, public navCtrl: NavController, public alertCtrl: AlertController) {
+  constructor(public userProvider: UserProvider, public navCtrl: NavController, public storage: Storage) {
   }
 
   ionViewDidLoad() {
     this.phoneNumber = '+91';
-    this.state = 'signup';
-    this.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {size: 'invisible'});
   }
 
-  async signup(): Promise<any> {
-    if(this.state == 'signup')
-      return this.userProvider.signUp(this.phoneNumber, this.recaptchaVerifier)
-        .then(() => this.state = 'fillProfile');
-    else if(this.state == 'verifyOTP') {
-      return this.userProvider.verifyOTP(this.OTP)
-        .then(async res => {
-          if(res) {
-            if(await this.userProvider.isProfileComplete())
-              this.navCtrl.setRoot(MorphlistPage);
-            else  this.state = 'fillProfile';
-          }
-          else  this.alertCtrl.create({ title: "Invalid OTP." }).present(); // Invalid OTP
-        });
-    }
-    else if(this.state == 'fillProfile') {
-      if(await this.userProvider.isProfileComplete())
-          this.navCtrl.setRoot(MorphlistPage);
-      else
-        return Promise.all([this.userProvider.setFullName(this.fullName),
-          this.userProvider.setPassword(this.password)])
-          .then(() => this.navCtrl.setRoot(MorphlistPage));
-    }
+  signup() {
+    var promise = this.userProvider.signUp(this.phoneNumber, this.fullName, this.password);
+    promise.then(() => {
+      this.storage.set("user", {"phoneNumber" : this.phoneNumber, "fullName": this.fullName});
+      this.navCtrl.setRoot(MenuPage);
+    })
   }
 }
