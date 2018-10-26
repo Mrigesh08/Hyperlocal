@@ -42,9 +42,9 @@ export class MorphlistPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad MorphlistPage');
-  }
+  // ionViewDidLoad() {
+  //   console.log('ionViewDidLoad MorphlistPage');
+  // }
 
   openPage(outlet){
     this.navCtrl.push(MenuPage , {

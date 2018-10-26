@@ -1,5 +1,12 @@
 page-menu {
-
+  .thisbg{
+    position: relative;
+    background: url('../../assets/imgs/thebg.jpg') no-repeat transparent;
+    background-size: cover;
+    height: 45%;
+    z-index: 1;
+    background-repeat: repeat;
+  }
   ion-slides{
     // border : 2px solid #000;
   }

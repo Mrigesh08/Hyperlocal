@@ -33,7 +33,7 @@ export class SignupPage {
     var promise = this.userProvider.signUp(this.phoneNumber, this.fullName, this.password);
     promise.then(() => {
       this.storage.set("user", {"phoneNumber" : this.phoneNumber, "fullName": this.fullName});
-      this.navCtrl.setRoot(MenuPage);
+      this.navCtrl.setRoot(MorphlistPage);
     })
   }
 }

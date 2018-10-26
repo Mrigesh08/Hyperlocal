@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, MenuController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { UserProvider } from '../../providers/user/user';
-import { Morphlist } from '..';
+import { MorphlistPage } from '../morphlist/morphlist';
 import { MenuPage } from '../menu/menu';
 
 /**
@@ -31,7 +31,7 @@ export class LoginPage {
     this.userProvider.login(this.phoneNumber, this.password).then(val => {
       if(val) {
         this.storage.set("user", {"phoneNumber" : this.phoneNumber, "fullName": this.userProvider.user.fullName});
-        this.navCtrl.setRoot(MenuPage);
+        this.navCtrl.setRoot(MorphlistPage);
       }
       else  this.alertCtrl.create({title: "Invalid phone number or password..."}).present();
       console.log(val);
