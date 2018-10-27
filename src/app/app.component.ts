@@ -18,7 +18,7 @@ export class MyApp {
   rootPage:any ;
   tutorialShownAlready : boolean = false;
   loggedInAlready : boolean = false;
-  devMode : boolean = true;
+  devMode : boolean = false;
   @ViewChild(Nav) nav: Nav;
   // pages: Array<{ title: string, component: any}>;
 
