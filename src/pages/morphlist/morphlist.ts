@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MenuPage } from '../menu/menu';
 import { ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
+import { HTTP } from '@ionic-native/http';
 
 /**
  * Generated class for the MorphlistPage page.
@@ -18,32 +19,35 @@ import { Slides } from 'ionic-angular';
 })
 export class MorphlistPage {
   @ViewChild(Slides) slides: Slides;
-	outlets: any[] = [
-		{
-			name: "PIZZACO",
-			image: "https://corporate.dominos.co.uk/Media/Default/Image%20Library/Image%20library%20-%20logos/RGB_White_Type_Tile_Only_Small.png",
-      menuImage : "assets/imgs/Menu/dominos.jpg",
-      themeColor : "#0078AC",
-			subtext: "Pizzas!!!",
-		},
-		{
-			name: "BURGERCO",
-			image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/McDonald%27s_Golden_Arches.svg/220px-McDonald%27s_Golden_Arches.svg.png",
-      menuImage : "assets/imgs/Menu/McD.jpg",
-      themeColor : "#FFF10A",
-      subtext: "Burgers!!!",
-		},
-		{
-			name: "CHICKENCO",
-			image: "https://upload.wikimedia.org/wikipedia/en/thumb/b/bf/KFC_logo.svg/1200px-KFC_logo.svg.png",
-      menuImage : "assets/imgs/Menu/KFC.jpg",
-      themeColor : "#A3080C",
-      subtext: "Chicken!!!",
-		},
-	]
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-
+	outlets: any[] = [];
+  displaySpinner : boolean = false;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http : HTTP) {
+    this.displaySpinner = true;
+    this.http.get('http://theautomation.co.in/getOutlets/', {}, {})
+    .then(
+      data => {
+        // console.log(data.data);
+        let x = JSON.parse(data.data);
+        for(let i=0; i<x.length ;i++){
+          var newOrg={
+            name: x[i].orgInfo.name,
+            image : x[i].orgInfo.image,
+            menuImage: x[i].orgInfo.menuImage,
+            themeColor : x[i].orgInfo.themeColor,
+            subtext : x[i].orgInfo.subtext
+          };
+          this.outlets.push(newOrg);
+        }
+        this.displaySpinner = false;
+        // console.log(JSON.stringify(x));
+      }
+    )
+    .catch(
+      error => {
+        this.displaySpinner = false;
+        console.log(error);
+      }
+    );
   }
 
   // ionViewDidLoad() {

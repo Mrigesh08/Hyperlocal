@@ -86,7 +86,7 @@ export class ReviewOrderPage implements OnInit{
     };
     let loading = this.loadingController.create({content : "Sending your order right away!"});
     loading.present();
-    this.http.get('http://contentholmes.com/addOrder/', orderOptions, {})
+    this.http.get('http://theautomation.co.in/addOrder/', orderOptions, {})
     .then(
       data => {
         // console.log(data.data);

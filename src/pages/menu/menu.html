@@ -69,7 +69,7 @@
         <div *ngSwitchCase="menuItem.tabName">
 
           <accordion *ngFor="let item of menuItem.menuItems; let j = index"
-            image="{{'http://contentholmes.com/'+item.imageURL}}" name="{{item.name}}" price="{{'Rs '+item.price}}" description="{{item.description}}" btnColor="{{themeColor}}">
+            image="{{'http://theautomation.co.in/'+item.imageURL}}" name="{{item.name}}" price="{{'Rs '+item.price}}" description="{{item.description}}" btnColor="{{themeColor}}">
 
               <div addButton><button #addbutton ion-button clear medium round class="btn-add" (click)=addItemToCart(i,j)>ADD</button></div>
               <div body>This goes to the body instead</div>

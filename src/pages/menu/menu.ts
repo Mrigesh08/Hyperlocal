@@ -56,7 +56,7 @@ export class MenuPage implements OnInit{
     }
     let loading = this.loadingController.create({content : "Fetching mouth watering delicacies..."});
     loading.present();
-    this.http.get('http://contentholmes.com/getMenu',{"orgID" : this.outletData.name}, {})
+    this.http.get('http://theautomation.co.in/getMenu',{"orgID" : this.outletData.name}, {})
     .then(
       data => {
         loading.dismissAll();

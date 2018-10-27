@@ -41,30 +41,14 @@ export class MyApp {
         this.rootPage = MorphlistPage;
       }
       else{
-        // this.storage.get("tutorialShownAlready").then((val)=>{
-        //   if(val){
-        //     this.tutorialShownAlready = val;
-        //   }
-        //   else{
-        //     this.storage.set("tutorialShownAlready",true);
-        //   }
-        // });
-        // this.storage.get("loggedInAlready").then((val)=>{
-        //   if(val){
-        //     this.loggedInAlready = val;
-        //   }
-        //   // remember to set this value to true on successful login
-        // });
-        // if(!this.tutorialShownAlready){
-        //   this.rootPage = TutorialPage;
-        // }
-        // else if(!this.loggedInAlready){
-        //   this.rootPage = WelcomePage;
-        // }
-        // else{
-        //   this.rootPage = MorphlistPage;
-        // }
-        this.rootPage = WelcomePage;
+        storage.get("user").then((val)=>{
+          if(val){
+            this.rootPage = MorphlistPage;
+          }
+          else{
+            this.rootPage = WelcomePage;
+          }
+        });
       }
     });
   }

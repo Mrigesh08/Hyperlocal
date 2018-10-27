@@ -29,8 +29,8 @@ export class WelcomePage {
       this.alertCtrl.create({title : "Please enter your name."}).present();
       return false;
     }
-    var regex = /^\d{10$/;
-    if(this.phoneNumber == undefined || this.phoneNumber == null || regex.test(this.phoneNumber)) {
+    var regex = /^\d{10}$/;
+    if(this.phoneNumber == undefined || this.phoneNumber == null || !regex.test(this.phoneNumber)) {
       this.alertCtrl.create({title: "Please enter a ten digit phone number."}).present();
       return false;
     }
