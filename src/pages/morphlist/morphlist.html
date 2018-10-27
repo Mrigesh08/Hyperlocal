@@ -9,10 +9,16 @@
   <div class="splash-info">
     <div class="splash-logo"></div>
     <div class="splash-intro">
-      Welcome!
+      <h3>
+        <br>
+        So, What are we having today?
+        <br>
+        <br>
+        <br>
+      </h3>
     </div>
   </div>
-	<ion-list>
+	<!-- <ion-list>
 		<ion-item-sliding >
 			<button ion-item *ngFor="let outlet of outlets" (click)="openPage(outlet)">
 				<ion-avatar item-start>
@@ -23,5 +29,20 @@
         <hr>
 			</button>
 		</ion-item-sliding>
-	</ion-list>
+	</ion-list> -->
+
+  <ion-slides effect="slide" spaceBetween="50px" slidesPerView="1.5" style="height:300px; width:80%; margin-left:10%;">
+    <ion-slide style="overflow:hidden;" *ngFor="let outlet of outlets" (click)="openPage(outlet)">
+        <ion-avatar class="darken-overlay">
+          <div class="darken-overlay">
+            <img [src]="outlet.image" />
+          </div>
+        </ion-avatar>
+        <h2>{{outlet.name}}</h2>
+        <p>{{outlet.subtext}}</p>
+    </ion-slide>
+    <ion-slide style="overflow:hidden;">
+
+    </ion-slide>
+  </ion-slides>
 </ion-content>

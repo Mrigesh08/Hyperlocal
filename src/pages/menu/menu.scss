@@ -1,4 +1,12 @@
 page-menu {
+  @font-face {
+    font-family: Poppins;
+    src: url(../../assets/fonts/Popins-Thin.ttf) format("ttf");
+  }
+  body, div, h1, h2, h3, h4 , p {
+      font-family: Poppins-Light !important;
+  }
+
   .thisbg{
     position: relative;
     background: url('../../assets/imgs/thebg.jpg') no-repeat transparent;

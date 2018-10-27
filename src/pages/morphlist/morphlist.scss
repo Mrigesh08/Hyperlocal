@@ -1,12 +1,19 @@
 page-morphlist {
+  @font-face {
+    font-family: Poppins;
+    src: url(../../assets/fonts/Popins-Thin.ttf) format("ttf");
+  }
+  body, div, h1, h2, h3, h4 , p {
+      font-family: Poppins-Light !important;
+  }
   .item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner, .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
       border-bottom-color: #000;
       -webkit-box-shadow: none;
       box-shadow: none
   }
   @font-face {
-  font-family: Poppins;
-  src: url(../../assets/fonts/Popins-Thin.ttf) format("ttf");
+    font-family: Poppins;
+    src: url(../../assets/fonts/Popins-Thin.ttf) format("ttf");
   }
   body {
       font-family: Poppins-Light !important;
@@ -54,5 +61,26 @@ page-morphlist {
     &.activated {
       background-color: rgb(220, 220, 220);
     }
+  }
+
+
+  .darken-overlay{
+    width: 90%;
+    border-radius: 50%;
+    overflow: hidden;
+    margin:auto;
+    -webkit-filter: grayscale(30%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(30%);
+  }
+
+
+  .darken-with-text p {
+    margin: 0;
+    font-size: 2em;
+    text-align: center;
+    color: white;
+    padding-top: 50px;
+    position: relative;
+    z-index: 1;
   }
 }

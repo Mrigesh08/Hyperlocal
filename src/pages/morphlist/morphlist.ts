@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MenuPage } from '../menu/menu';
+import { ViewChild } from '@angular/core';
+import { Slides } from 'ionic-angular';
+
 /**
  * Generated class for the MorphlistPage page.
  *
@@ -14,7 +17,7 @@ import { MenuPage } from '../menu/menu';
   templateUrl: 'morphlist.html',
 })
 export class MorphlistPage {
-
+  @ViewChild(Slides) slides: Slides;
 	outlets: any[] = [
 		{
 			name: "PIZZACO",
@@ -40,12 +43,15 @@ export class MorphlistPage {
 	]
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+
   }
 
   // ionViewDidLoad() {
   //   console.log('ionViewDidLoad MorphlistPage');
   // }
-
+  ionViewDidLoad() {
+    this.slides.stopAutoplay();
+  }
   openPage(outlet){
     this.navCtrl.push(MenuPage , {
       data : outlet

@@ -2,6 +2,9 @@ import { Component, ViewChild, OnInit, Renderer } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HTTP } from '@ionic-native/http';
 import { Toast } from '@ionic-native/toast';
+import { LoadingController } from 'ionic-angular';
+import { MorphlistPage } from '../morphlist/morphlist';
+
 /**
  * Generated class for the ReviewOrderPage page.
  *
@@ -22,7 +25,7 @@ export class ReviewOrderPage implements OnInit{
   code : string;
   @ViewChild("cc2") couponEntry : any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public renderer : Renderer, public http: HTTP, public toast:Toast) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public renderer : Renderer, public http: HTTP, public toast:Toast, public loadingController:LoadingController) {
     this.cartItems = navParams.get("data");
     if(!this.cartItems){
       this.cartItems = [];
@@ -76,22 +79,26 @@ export class ReviewOrderPage implements OnInit{
       userPhone : "123456789",
       items : JSON.stringify(this.cartItems)
     };
+    let loading = this.loadingController.create({content : "Sending your order right away!"});
+    loading.present();
     this.http.get('http://contentholmes.com/addOrder/', orderOptions, {})
     .then(
       data => {
         // console.log(data.data);
+        loading.dismissAll();
         let x = JSON.parse(data.data);
         if(x.success){
           this.cartItems.splice(0, this.cartItems.length);
           this.cartTotal = 0;
-          this.toast.show("Your order has been placed", "1000", "bottom").subscribe(
+          this.toast.show("Your order has been placed", "3000", "bottom").subscribe(
             toast => {
               console.log(toast);
+              this.navCtrl.setRoot(MorphlistPage);
             }
           );
         }
         else{
-          this.toast.show("Your order could not be placed. Please try again.", "1000", "bottom").subscribe(
+          this.toast.show("Your order could not be placed. Please try again.", "1000", "center").subscribe(
             toast => {
               console.log(toast);
             }
@@ -101,6 +108,7 @@ export class ReviewOrderPage implements OnInit{
     )
     .catch(
       error => {
+        loading.dismissAll();
         console.log(error);
       }
     );
