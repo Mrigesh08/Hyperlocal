@@ -1,22 +1,10 @@
 page-morphlist {
-  @font-face {
-    font-family: Poppins;
-    src: url(../../assets/fonts/Popins-Thin.ttf) format("ttf");
-  }
-  body, div, h1, h2, h3, h4 , p {
-      font-family: Poppins-Light !important;
-  }
+
+
   .item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner, .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
       border-bottom-color: #000;
       -webkit-box-shadow: none;
-      box-shadow: none
-  }
-  @font-face {
-    font-family: Poppins;
-    src: url(../../assets/fonts/Popins-Thin.ttf) format("ttf");
-  }
-  body {
-      font-family: Poppins-Light !important;
+      box-shadow: none;
   }
   .splash-bg {
     position: relative;
