@@ -1,0 +1,20 @@
+<!-- Generated template for the AccordionComponent component -->
+
+<ion-card  style="padding-bottom:0;">
+  <div class="menucard-img" (click)="toggleCard()">
+    <!-- <img src="{{ image }}"> -->
+    <img-loader src="{{ image }}" useImg class="theImage"></img-loader>
+    <!-- <p>{{ image }}</p> -->
+    <div class="menucard-price">  {{ price }}</div>
+  </div>
+  <ion-card-header >
+    <div class="item-name" (click)="toggleCard()">{{ name }}</div>
+    <div style="float:right;">
+      <ng-content select="[addButton]"></ng-content>
+    </div>
+  </ion-card-header>
+  <ion-card-content class="item-description" (click)="toggleCard()">
+    {{ description }}
+  </ion-card-content>
+
+</ion-card>

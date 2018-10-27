@@ -1,0 +1,106 @@
+<!--
+  Generated template for the ReviewOrderPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Order Review</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <!-- <ion-card style="padding-bottom:0;">
+    <ion-card-header (click)="toggleCard()" class="couponHeader" no-margin>
+      <ion-icon name="pricetags" style="color:#00f;"></ion-icon>
+       Have a coupon?
+    </ion-card-header>
+    <ion-card-content #cc2 class="hiddenContent" text-center>
+      <form (ngSubmit)="submitCoupon()">
+        <ion-item>
+          <ion-input type="text" name="code" placeholder="Enter coupon code .." [(ngModel)]="code"></ion-input>
+        </ion-item>
+        <button ion-button block medium type="submit">Submit</button>
+      </form>
+    </ion-card-content>
+  </ion-card> -->
+  <ion-card>
+    <!-- <ion-card-header>
+      Order Summary
+    </ion-card-header> -->
+    <ion-card-content>
+      <ion-list>
+        <!-- <ion-item *ngFor="let item of cartItems; let i = index" id="{{'item'+i}}">
+          <div style="width:100%;">
+            <div style="float:left;width: 50%;">
+              {{ item.name }}
+            </div>
+            <div style="float:right;">
+              {{ item.finalPrice }}
+            </div>
+
+          </div>
+          <div style="float:right;width:100%;padding-top:0.5em;">
+            <div style="float:left;width : 50%;">
+              <button ion-button clean medium round (click)="increaseQuantity(i)">
+                <ion-icon name="add" style="color:#fff;" class="iconClass"></ion-icon>
+              </button>
+              <span id="{{'qty'+i}}">{{item.quantity}}</span>
+              <button ion-button clean medium round (click)="decreaseQuantity(i)">
+                <ion-icon name="remove" style="color:#fff;"></ion-icon>
+              </button>
+            </div>
+            <ion-icon name="trash" style="color:#a00;float:right;font-size:2em;" (click)="removeItem(i)"></ion-icon>
+          </div>
+        </ion-item> -->
+        <ion-item *ngFor="let item of cartItems; let i = index" id="{{'item'+i}}">
+          <div style="width:100%;">
+            <div style="float:left;width: 50%; font-size:1.2em;">
+              {{ item.name }}
+            </div>
+            <div style="float:right; font-size:1.2em;">
+              {{ item.finalPrice }}
+            </div>
+
+          </div>
+          <div style="float:right;width:100%;padding-top:0.5em;">
+            <div style="float:left;width : 50%;">
+              <button ion-button medium round outline color="dark" (click)="decreaseQuantity(i)">
+                <ion-icon name="remove" style="color:#555;"></ion-icon>
+              </button>
+              <button ion-button color="light" id="{{'qty'+i}}" style="background-color:#fff; box-shadow:none;border:0px; font-size:1.3em;" >
+                {{item.quantity}}
+              </button>
+              <button ion-button medium round outline color="dark" (click)="increaseQuantity(i)">
+                <ion-icon name="add" style="color:#555;" class="iconClass"></ion-icon>
+              </button>
+
+            </div>
+            <ion-icon name="trash" style="color:#ba2a2a;float:right;font-size:2em;" (click)="removeItem(i)"></ion-icon>
+          </div>
+        </ion-item>
+
+      </ion-list>
+
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+  </ion-card>
+
+</ion-content>
+
+<ion-footer text-center>
+  <ion-list no-padding>
+    <ion-item style="margin-bottom:0px;">
+      <p style="float:left; font-weight: bold; font-size:1.2em;">Order Total</p>
+      <p style="float:right; font-weight:bold; font-size:1.2em;">{{ cartTotal }}</p>
+    </ion-item>
+  </ion-list>
+  <button ion-button large full text-center color="light" (click)="sendOrder()">
+    Place Order
+  </button>
+</ion-footer>

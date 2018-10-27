@@ -1,0 +1,30 @@
+<ion-content scroll="false">
+  <div class="splash-bg"></div>
+  <div class="splash-info">
+    <div class="splash-logo"></div>
+    <div class="splash-intro">
+      Welcome!
+    </div>
+  </div>
+  <div padding>
+    <ion-list>
+    <ion-item no-padding>
+      <ion-label color="dark" floating>Name</ion-label>
+      <ion-input [(ngModel)]="fullName" type="string"></ion-input>
+    </ion-item>
+
+    <ion-item no-padding>
+      <ion-label color="dark" floating>Phone Number</ion-label>
+      <ion-input [(ngModel)]="phoneNumber" type="string"></ion-input>
+    </ion-item>
+
+    <ion-item no-padding>
+      <ion-label color="dark" floating>Password</ion-label>
+      <ion-input [(ngModel)]="password" type="password"></ion-input>
+    </ion-item>
+    <br>
+    <button ion-button block medium outline (click)="signup()" color="dark" type="submit">SIGNUP</button>
+    </ion-list>
+    <button ion-button block medium outline (click)="login()" color="light" style="color:#000;">CLICK HERE TO LOGIN</button>
+  </div>
+</ion-content>

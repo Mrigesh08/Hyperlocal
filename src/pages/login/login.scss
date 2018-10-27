@@ -1,0 +1,75 @@
+
+page-login {
+  
+  $text-input-highlight-color-valid: #000;
+  $text-input-highlight-color: #000;
+  $text-input-md-highlight-color : #000;
+  $text-input-md-highlight-color-valid: #000;
+  $colors: (
+    primary: #000,
+    secondary: #000
+    // Other colors removed for brevity
+  );
+  $colors-md: (
+    primary: #000,
+    secondary: #000
+    // Other colors removed for brevity
+  );
+  $text-color :#000;
+  .item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner, .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+      border-bottom-color: #000;
+      -webkit-box-shadow: none;
+      box-shadow: none
+  }
+  @font-face {
+  font-family: Poppins;
+  src: url(../../assets/fonts/Popins-Thin.ttf) format("ttf");
+  }
+  body {
+      font-family: Poppins-Light !important;
+  }
+  .splash-bg {
+    position: relative;
+    background: url('../../assets/imgs/thebg.jpg') no-repeat transparent;
+    background-size: cover;
+    height: 45%;
+    z-index: 1;
+    background-repeat: repeat-x;
+    animation: animatedBackground 2s linear infinite;
+  }
+
+  @keyframes animatedBackground {
+    from { background-position: 0 0; }
+    to { background-position: 100% 0; }
+  }
+
+  .splash-info {
+    position: relative;
+    z-index: 2;
+    margin-top: -64px;
+    text-align: center;
+  }
+  .splash-logo {
+    margin: auto;
+    background: url('../../assets/imgs/icon.png') repeat transparent;
+    background-size: 100%;
+    width: 100px;
+    height: 100px;
+  }
+  .splash-intro {
+    font-size: 1.5em;
+    max-width: 80%;
+    margin: auto;
+    margin-top:1em;
+  }
+  button.login {
+    margin-top: 25px;
+    background-color: white;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+    color: #333;
+
+    &.activated {
+      background-color: rgb(220, 220, 220);
+    }
+  }
+}
