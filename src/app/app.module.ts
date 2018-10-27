@@ -9,47 +9,39 @@ import { Toast } from '@ionic-native/toast';
 import { IonicStorageModule, Storage } from '@ionic/storage';
 
 import { MyApp } from './app.component';
-import { SignupPage } from '../pages/signup/signup';
-import { WelcomePage } from '../pages/welcome/welcome';
-import { MorphlistPage } from '../pages/morphlist/morphlist';
+import { SignupPageModule } from '../pages/signup/signup.module';
+import { WelcomePageModule } from '../pages/welcome/welcome.module';
+import { MorphlistPageModule } from '../pages/morphlist/morphlist.module';
 import { UserProvider } from '../providers/user/user';
 import { OrganizationProvider } from '../providers/organization/organization';
-import { TutorialPage } from "../pages/tutorial/tutorial";
-import { MenuPage } from '../pages/menu/menu';
-import { ReviewOrderPage } from "../pages/review-order/review-order";
+import { TutorialPageModule } from "../pages/tutorial/tutorial.module";
+import { MenuPageModule } from '../pages/menu/menu.module';
+import { ReviewOrderPageModule } from "../pages/review-order/review-order.module";
 import {AccordionComponent} from '../components/accordion/accordion';
 import { IonicImageLoader } from 'ionic-image-loader';
-import { LoginPage } from '../pages/login/login';
+import { LoginPageModule } from '../pages/login/login.module';
 
 @NgModule({
   declarations: [
-    MyApp,
-    SignupPage,
-    WelcomePage,
-    TutorialPage,
-    MorphlistPage,
-    MenuPage,
-    ReviewOrderPage,
-    AccordionComponent,
-    LoginPage
+    MyApp
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     IonicImageLoader.forRoot(),
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    SignupPageModule,
+    WelcomePageModule,
+    TutorialPageModule,
+    MorphlistPageModule,
+    MenuPageModule,
+    ReviewOrderPageModule,
+    LoginPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    SignupPage,
-    WelcomePage,
-    TutorialPage,
-    MorphlistPage,
-    MenuPage,
-    ReviewOrderPage,
-    LoginPage
+    MyApp
   ],
   providers: [
     StatusBar,

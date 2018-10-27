@@ -1,7 +1,7 @@
 import { Component, ViewChild, Renderer, Renderer2, OnInit, ElementRef, Inject} from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { IonicPage, NavController, NavParams} from 'ionic-angular';
-// import { AccordionComponent } from '../../components/accordion/accordion';
+import { AccordionComponent } from '../../components/accordion/accordion';
 import { ReviewOrderPage } from "../review-order/review-order";
 import { HTTP } from '@ionic-native/http';
 import { LoadingController } from 'ionic-angular';
