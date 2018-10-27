@@ -32,4 +32,9 @@ export class UserProvider {
         return val;
       })
   }
+  checkAccount(phoneNumber: string) : Promise<boolean> {
+    return firebase.database().ref("/users/").once("value").then(snap => {
+      return snap.hasChild(phoneNumber);
+    })
+  }
 }
