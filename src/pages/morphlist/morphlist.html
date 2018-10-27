@@ -11,7 +11,7 @@
     <div class="splash-intro">
       <h3 *ngIf="!displaySpinner">
         <br>
-        So, What are we having today?
+        So, what are you having today?
         <br>
         <br>
         <br>
@@ -35,7 +35,7 @@
     <ion-slide style="overflow:hidden;" *ngFor="let outlet of outlets" (click)="openPage(outlet)">
         <ion-avatar class="darken-overlay">
           <div class="darken-overlay">
-            <img [src]="outlet.image" />
+            <img-loader [src]="outlet.image" useImg></img-loader>
           </div>
         </ion-avatar>
         <h2>{{outlet.name}}</h2>
