@@ -27,9 +27,28 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
 
-  login() {
+  checkInput() : boolean {
+    var regex = /^\d{10$/;
+    if(this.phoneNumber == undefined || this.phoneNumber == null || regex.test(this.phoneNumber)) {
+      this.alertCtrl.create({title: "Please enter a ten digit phone number."}).present();
+      return false;
+    }
+    if(this.password == undefined || this.password == null) {
+      this.alertCtrl.create({title: "Please enter a password"}).present();
+      return false;
+    }
+    return true;
+  }
+
+  async login() {
+    if(!this.checkInput()) return;
     let loading = this.loadingController.create({content : "Hold up!"});
     loading.present();
+    if(!await this.userProvider.checkAccount(this.phoneNumber)) {
+      loading.dismissAll();
+      this.alertCtrl.create({title : "An account with the given phone number does not exist."}).present();
+      return;
+    }
     this.userProvider.login(this.phoneNumber, this.password).then(val => {
       loading.dismissAll();
       if(val) {

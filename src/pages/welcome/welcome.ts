@@ -22,20 +22,20 @@ export class WelcomePage {
   public phoneNumber: string;
   public fullName: string;
   public password: string;
-  constructor(public userProvider: UserProvider, public navCtrl: NavController, public storage: Storage, public loadingController:LoadingController, public alertCtrt: AlertController) { }
+  constructor(public userProvider: UserProvider, public navCtrl: NavController, public storage: Storage, public loadingController:LoadingController, public alertCtrl: AlertController) { }
 
   checkInput() : boolean {
     if(this.fullName == undefined || this.fullName == null || this.fullName == "") {
-      this.alertCtrt.create({title : "Please enter your name."}).present();
+      this.alertCtrl.create({title : "Please enter your name."}).present();
       return false;
     }
     var regex = /^\d{10$/;
     if(this.phoneNumber == undefined || this.phoneNumber == null || regex.test(this.phoneNumber)) {
-      this.alertCtrt.create({title: "Please enter a ten digit phone number."}).present();
+      this.alertCtrl.create({title: "Please enter a ten digit phone number."}).present();
       return false;
     }
     if(this.password == undefined || this.password == null || this.password.length < 8 || this.password.length > 16) {
-      this.alertCtrt.create({title: "Please enter a password of length between 8 and 16 characters."}).present();
+      this.alertCtrl.create({title: "Please enter a password of length between 8 and 16 characters."}).present();
       return false;
     }
     return true;
@@ -47,7 +47,7 @@ export class WelcomePage {
     loading.present();
     if(await this.userProvider.checkAccount(this.phoneNumber)) {
       loading.dismissAll();
-      this.alertCtrt.create({title : "An account with the given phone number already exits."}).present();
+      this.alertCtrl.create({title : "An account with the given phone number already exists."}).present();
       return;
     }
     var promise = this.userProvider.signUp(this.phoneNumber, this.fullName, this.password);
